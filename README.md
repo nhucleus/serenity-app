@@ -17,7 +17,6 @@
    * Logged in users can write journals, draw images with a virtual canvas, and leave nice comments for other users
 <br />
 <br />
-<br />
 
 ## Database Schema and Diagram:
 
@@ -91,12 +90,49 @@
 ![DB](./project_planning/serenity_dbschema.png)
 <br />
 <br />
-<br />
 
 ## WIREFRAMES
-![SplashPage](./project_planning/SplashPage.png)
-![SignupModal](./project_planning/SignupModal.png)
-![LoginModal](./project_planning/LoginModal.png)
-![DashboardPage](./project_planning/Dashboard.png)
-![JournalPage](./project_planning/JournalEntryModal.png)
-![CanvasPage](./project_planning/CanvasModal.png)
+PATH: `"/"`
+![Splash Page](./project_planning/SplashPage.png)
+<br />
+<br />
+
+PATH: `/signup`
+![Signup Modal](./project_planning/SignupModal.png)
+<br />
+<br />
+
+PATH: `"/login"`
+![Login Modal](./project_planning/LoginModal.png)
+<br />
+<br />
+
+PATH: `"/dashboard"`
+![Dashboard Page](./project_planning/Dashboard.png)
+<br />
+<br />
+
+PATH: `"/journal/new"`
+![New Journal Page](./project_planning/JournalEntryModal.png)
+<br />
+<br />
+
+PATH: `"/canvas/new"`
+![New Canvas Page](./project_planning/CanvasModal.png)
+<br />
+<br />
+
+PATH: `"/comment/new"`
+![New Comment Page](./project_planning/NiceCommentModal.png)
+<br />
+<br />
+
+PATH: `"/dashboard"`
+![New Comment Page](./project_planning/DrawerWithNotification.png)
+<br />
+<br />
+
+PATH: `"/inbox"`
+![New Comment Page](./project_planning/UserInbox.png)
+<br />
+<br />
