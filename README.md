@@ -86,6 +86,8 @@
 |-------------|:---------:|-----------------------|
 | userId      |  integer  | not null              |
 | friendId    |  integer  | not null              |
+<br />
+<br />
 
 ![DB](./project_planning/serenity_dbschema.png)
 <br />
@@ -136,3 +138,22 @@
 ![New Comment Page](./project_planning/UserInbox.png)
 <br />
 <br />
+
+## Components List
+  * Splash Page
+  * Login Modal
+  * Signup Modal
+  * Calendar/Dashboard Page
+  * Journal Modal
+  * Canvas Modal
+  * Comment Modal
+  * Drawer Component
+  * Inbox component
+
+
+## Technologies
+   * React
+   * Flask
+   * React-calendar npm
+   * React-canvas-draw npm
+   * Component library TBD
