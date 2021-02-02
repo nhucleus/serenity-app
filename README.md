@@ -92,47 +92,47 @@
 <br />
 
 ## WIREFRAMES
-PATH: `"/"`
+**PATH**: `"/"`
 ![Splash Page](./project_planning/SplashPage.png)
 <br />
 <br />
 
-PATH: `/signup`
+**PATH**: `/signup`
 ![Signup Modal](./project_planning/SignupModal.png)
 <br />
 <br />
 
-PATH: `"/login"`
+**PATH**: `"/login"`
 ![Login Modal](./project_planning/LoginModal.png)
 <br />
 <br />
 
-PATH: `"/dashboard"`
+**PATH**: `"/dashboard"`
 ![Dashboard Page](./project_planning/Dashboard.png)
 <br />
 <br />
 
-PATH: `"/journal/new"`
+**PATH**: `"/new/journal"`
 ![New Journal Page](./project_planning/JournalEntryModal.png)
 <br />
 <br />
 
-PATH: `"/canvas/new"`
+**PATH**: `"/new/canvas"`
 ![New Canvas Page](./project_planning/CanvasModal.png)
 <br />
 <br />
 
-PATH: `"/comment/new"`
+**PATH**: `"/new/comment"`
 ![New Comment Page](./project_planning/NiceCommentModal.png)
 <br />
 <br />
 
-PATH: `"/dashboard"`
+**PATH**: `"/dashboard"`
 ![New Comment Page](./project_planning/DrawerWithNotification.png)
 <br />
 <br />
 
-PATH: `"/inbox"`
+**PATH**: `"/inbox"`
 ![New Comment Page](./project_planning/UserInbox.png)
 <br />
 <br />
