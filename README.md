@@ -139,6 +139,14 @@
 <br />
 <br />
 
+**PATH**: `"/journal/:id"`
+
+**PATH**: `"/journal/all"`
+
+**PATH**: `"/canvas/:id"`
+
+**PATH**: `"/canvas/all"`
+
 ## Components List
   * Splash Page
   * Login Modal
@@ -149,7 +157,8 @@
   * Comment Modal
   * Drawer Component
   * Inbox component
-
+<br />
+<br />
 
 ## Technologies
    * React
