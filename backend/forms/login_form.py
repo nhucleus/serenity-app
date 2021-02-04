@@ -5,9 +5,8 @@ from app.models import User
 
 
 def user_exists(form, field):
-  email = field.data
-  username = field.data
-  user = User.query.filter(User.email == email or User.username == username).first()
+  credentials = field.data
+  user = User.query.filter(User.email == credentials or User.username == credentials).first()
   if not user:
     raise ValidationError("Email or username provided does not exist.")
 

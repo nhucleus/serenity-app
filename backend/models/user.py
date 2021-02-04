@@ -9,9 +9,27 @@ class User(db.Model, UserMixin):
   first_name = db.Column(db.String(40), nullable = False)
   last_name = db.Column(db.String(40), nullable = False)
   username = db.Column(db.String(40), nullable = False, unique = True)
-  email = db.Column(db.String(255), nullable=False, unique=True)
-  hashed_password = db.Column(db.String(255), nullable=False)
+  email = db.Column(db.String(255), nullable = False, unique = True)
+  hashed_password = db.Column(db.String(255), nullable = False)
   
+  friends = db.Table(
+    "friends",
+    db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("friend_id", db.Integer, db.ForeignKey("users.id"))
+  )
+
+  friendships = db.relationship(
+    "User",
+    secondary=friends,
+    primaryjoin=(friends.c.user_id == id),
+    secondaryjoin=(friends.c.friend_id == id),
+    backref=db.backref("friends", lazy="dynamic"),
+    lazy="dynamic"
+  )
+  journal_entries = db.relationship("Journal", back_populates="user")
+  drawings = db.relationship("Drawing", back_populates="user")
+  messages = db.relationship("Message", back_populates="user")
+
 
   @property
   def password(self):
