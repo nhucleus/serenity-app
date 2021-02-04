@@ -99,7 +99,7 @@
 <br />
 <br />
 
-**PATH**: `/signup`
+**PATH**: `"/signup"`
 ![Signup Modal](./project_planning/SignupModal.png)
 <br />
 <br />
@@ -146,6 +146,40 @@
 **PATH**: `"/canvas/:id"`
 
 **PATH**: `"/canvas/all"`
+
+## API Routes
+   * auth_routes: `"/auth"`
+      * GET
+         * Authenticate a user: `""`
+         * Logout a user: `"/logout"`
+         * Unauthorized route: `"/unauthorized"`
+      * POST
+         * Login a user: `"/login"`
+         * Signup a user: `"/signup"`
+
+   * journal_routes: `"/journal"`
+      * GET
+         * All journal entries: `"/entries"`
+         * A journal entry: `"/<int:id>"`
+      * POST
+         * Create journal entry: `"/new"`
+      * DELETE
+         * Remove journal entry: `"/<int:id>/delete"`
+   * canvas_routes: `"/canvas"`
+      * GET
+         * All canvas drawings: `"/drawings"`
+         * A canvas drawing: `"/<int:id>"`
+      * POST
+         * Publish a drawing: `"/new"`
+      * DELETE
+         * Remove a drawing: `"/<int:id>/delete"`
+   * message_routes: `"/inbox"`
+      * GET
+         * All messages: `"/inbox"`
+      * POST
+         * Send a message: `"/new"`
+<br />
+<br />      
 
 ## Components List
   * Splash Page
