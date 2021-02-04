@@ -24,8 +24,10 @@ def new_drawing():
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     new_drawing = Drawing(
+      user_id=current_user.id,
       title=form.data['title'],
-      image=form.data['image']
+      image=form.data['image'],
+      created_at=Date.today()
     )
     db.session.add(new_drawing)
     db.session.commit()

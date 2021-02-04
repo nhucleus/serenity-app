@@ -27,9 +27,11 @@ def new_entry():
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     journal_entry = Journal(
+      user_id=current_user.id,
       title=form.data['title'],
       body=form.data['body'],
-      photo=form.data['photo']
+      photo=form.data['photo'],
+      created_at=Date.today()
     )
     db.session.add(journal_entry)
     db.session.commit()

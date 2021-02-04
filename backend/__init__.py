@@ -8,6 +8,7 @@ from flask_login import LoginManager
 from .models import db, User, Journal, Drawing, Message
 from .api.auth_routes import auth_routes
 from .api.journal_routes import journal_routes
+from .api.canvas_routes import canvas_routes
 
 
 app = Flask(__name__)
@@ -26,6 +27,7 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(journal_routes, url_prefix='/api/journal')
+app.register_blueprint(canvas_routes, url_prefix='/api/canvas')
 
 
 db.init_app(app)
