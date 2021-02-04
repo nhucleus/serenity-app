@@ -35,10 +35,13 @@ def login():
   return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
-@auth_routes.route("/logout")
+@auth_routes.route('/logout')
 def logout():
-  logout_user():
-  return {"message": "User logged out"}
+    """
+    Logs a user out
+    """
+    logout_user()
+    return {'message': 'User logged out'}
 
 
 @auth_routes.route("/signup", methods=["POST"])

@@ -1,6 +1,6 @@
 from .db import db
 
-class Jounal(db.Model):
+class Journal(db.Model):
   __tablename__ = 'journal_entries'
 
   id = db.Column(db.Integer, primary_key=True)
@@ -8,7 +8,7 @@ class Jounal(db.Model):
   title = db.Column(db.String(100), nullable=False)
   body = db.Column(db.Text, nullable=False)
   photo = db.Column(db.String)
-  created_at = db.Column(db.Date.today(), unique=True, nullable=False)
+  created_at = db.Column(db.Date, unique=True, nullable=False)
 
 
   user = db.relationship("User", back_populates="journal_entries")

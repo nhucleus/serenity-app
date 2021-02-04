@@ -9,7 +9,11 @@ from .models import db, User, Journal, Drawing, Message
 from .api.auth_routes import auth_routes
 from .api.journal_routes import journal_routes
 from .api.canvas_routes import canvas_routes
+from .api.message_routes import message_routes
 
+from .seeds import seed_commands
+
+from .config import Config
 
 app = Flask(__name__)
 
@@ -28,6 +32,7 @@ app.config.from_object(Config)
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(journal_routes, url_prefix='/api/journal')
 app.register_blueprint(canvas_routes, url_prefix='/api/canvas')
+app.register_blueprint(message_routes, url_prefix='/api/inbox')
 
 
 db.init_app(app)
@@ -35,12 +40,6 @@ Migrate(app, db)
 
 # Application Security
 CORS(app)
-
-# Since we are deploying with Docker and Flask,
-# we won't be using a buildpack when we deploy to Heroku.
-# Therefore, we need to make sure that in production any 
-# request made over http is redirected to https.
-# Well.........
 
 @app.before_request
 def https_redirect():
