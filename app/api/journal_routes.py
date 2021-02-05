@@ -3,6 +3,7 @@ from flask import Blueprint
 from app.models import Journal
 from flask_login import login_required, current_user
 from ..forms import JournalForm
+import datetime
 
 journal_routes = Blueprint('journal', __name__)
 
@@ -31,7 +32,7 @@ def new_entry():
       title=form.data['title'],
       body=form.data['body'],
       photo=form.data['photo'],
-      created_at=Date.today()
+      created_at=datetime.now()
     )
     db.session.add(journal_entry)
     db.session.commit()

@@ -3,6 +3,7 @@ from flask import Blueprint
 from app.models import Drawing
 from flask_login import login_required
 from ..forms import DrawingForm
+import datetime
 
 canvas_routes = Blueprint('canvas', __name__)
 
@@ -27,7 +28,7 @@ def new_drawing():
       user_id=current_user.id,
       title=form.data['title'],
       image=form.data['image'],
-      created_at=Date.today()
+      created_at=datetime.now()
     )
     db.session.add(new_drawing)
     db.session.commit()
