@@ -51,5 +51,6 @@ class User(db.Model, UserMixin):
       "last_name": self.last_name,
       "username": self.username,
       "email": self.email,
-      "journal_entries": journal_entries.to_dict()
+      "journal_entries": journal_entries.to_dict(),
+      "friendships": friendships
       }
