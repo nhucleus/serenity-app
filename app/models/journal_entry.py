@@ -8,7 +8,7 @@ class Journal(db.Model):
   title = db.Column(db.String(100), nullable=False)
   body = db.Column(db.Text, nullable=False)
   photo = db.Column(db.String)
-  created_at = db.Column(db.DateTime, unique=True, nullable=False)
+  created_at = db.Column(db.DateTime, nullable=False)
 
 
   user = db.relationship("User", back_populates="journal_entries")
