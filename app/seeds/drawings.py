@@ -6,7 +6,7 @@ def seed_drawings():
 
   demo = Drawing(user=users[0],
                 title='Sunshine',
-                image='morning reminder to upload photos into seed file',
+                image='',
                 created_at='2020-02-01 11:30:02')
   
   demo1 = Drawing(user=users[0],
