@@ -38,6 +38,6 @@ def seed_journals():
   db.session.commit()
 
 
-def undo_users():
+def undo_journals():
   db.session.execute('TRUNCATE journal_entries CASCADE;')
   db.session.commit()

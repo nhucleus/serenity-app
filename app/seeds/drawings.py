@@ -38,6 +38,6 @@ def seed_drawings():
   db.session.commit()
 
 
-def undo_users():
+def undo_drawings():
   db.session.execute('TRUNCATE drawings CASCADE;')
   db.session.commit()

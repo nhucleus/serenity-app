@@ -1,4 +1,4 @@
-from app.models import db, User, friends
+from app.models import db, User
 
 def seed_friends():
   users = User.query.all()
@@ -9,6 +9,12 @@ def seed_friends():
   demo3 = friends(user_id=users[0], friend_id=users[4])
   demo4 = friends(user_id=users[0], friend_id=users[5])
   demo5 = friends(user_id=users[0], friend_id=users[6])
+  demo6 = friends(user_id=users[1], friend_id=users[0])
+  demo7 = friends(user_id=users[2], friend_id=users[0])
+  demo8 = friends(user_id=users[3], friend_id=users[0])
+  demo9 = friends(user_id=users[4], friend_id=users[0])
+  demo10 = friends(user_id=users[5], friend_id=users[0])
+  demo11 = friends(user_id=users[6], friend_id=users[0])
 
   db.session.add(demo)
   db.session.add(demo1)
@@ -20,6 +26,6 @@ def seed_friends():
   db.session.commit()
 
 
-def undo_users():
+def undo_friends():
   db.session.execute('TRUNCATE friends CASCADE;')
   db.session.commit()
