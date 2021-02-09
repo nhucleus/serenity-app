@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import * as sessionActions from "../../store/auth";
+import "./NavBar.css";
 
 
 const NavBar = ({ isLoaded }) => {

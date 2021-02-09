@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#title {
+  font-family: 'Sacramento', cursive;
+  font-size: larger;
+  color: white;
+  text-decoration: none;
+  text-shadow:
+    -1px -1px 0 rgba(255,255,255,.5),
+    1px 1px 0 rgba(0,0,0,.25),
+    3px 3px 3px rgba(0,0,0,.25),
+    10px 10px 20px rgba(0,0,0,.5),
+    20px 40px 40px rgba(0,0,0,.5); 
+}
+
+.nav-bar__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: linear-gradient(0deg, rgba(117,190,218,88%) 0%, rgba(40,27,255,1) 100%);
+  height: 100px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-bar > * {
+  list-style: none;
+}
