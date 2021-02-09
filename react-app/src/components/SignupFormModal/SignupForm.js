@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/auth";
+import "./SignupForm.css";
 
 const SignupForm = () => {
   const dispatch = useDispatch();

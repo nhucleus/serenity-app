@@ -11,10 +11,10 @@ import Dashboard from "./components/Dashboard";
 function App() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true);
   
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(false));
   }, [dispatch]);
 
   return (
