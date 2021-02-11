@@ -1,6 +1,6 @@
 from .auth_routes import validation_errors_to_error_messages
-from flask import Blueprint
-from app.models import Journal
+from flask import Blueprint, request
+from app.models import Journal, db
 from flask_login import login_required, current_user
 from ..forms import JournalForm
 import datetime
@@ -26,13 +26,21 @@ def journal_entry():
 def new_entry():
   form = JournalForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-  if form.validate_on_submit():
+  if form.validate_on_submit() and form.data['photo']:
     journal_entry = Journal(
       user_id=current_user.id,
       title=form.data['title'],
       body=form.data['body'],
       photo=form.data['photo'],
-      created_at=datetime.now()
+    )
+    db.session.add(journal_entry)
+    db.session.commit()
+  elif form.validate_on_submit() and not form.data['photo']:
+    journal_entry = Journal(
+      user_id=current_user.id,
+      title=form.data['title'],
+      body=form.data['body'],
+      created_at=datetime.datetime.now()
     )
     db.session.add(journal_entry)
     db.session.commit()
