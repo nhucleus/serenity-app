@@ -1,14 +1,23 @@
 import "./JournalEntry.css";
-import {useState} from "react";
-import { useDispatch } from "react-redux";
-import {createJournalEntry} from "../../store/entries"
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createJournalEntry } from "../../store/entries"
 
 
 const JournalEntry = ({onClose}) => {
+  const current = useSelector(state => state.entries.journals.current);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [image, setImage] = useState("");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (current) {
+      setTitle(current.title)
+      setBody(current.body)
+    }
+  }, [current]);
+  
   
   const submitJournal = () => {
     const entry = {
@@ -18,7 +27,8 @@ const JournalEntry = ({onClose}) => {
     dispatch(createJournalEntry(entry));
     onClose()
 
-  }
+  };
+
   return (
     <div className="journal-entry-container">
       <div className="journal-entry-header">

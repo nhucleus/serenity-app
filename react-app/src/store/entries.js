@@ -18,13 +18,14 @@ export const createJournalEntry = (entry) => async (dispatch) => {
 
 }
 
-const initialState = { journals: null }
+const initialState = { journals: {} }
 
 function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case CREATE_NEW_JOURNAL:
-      newState = Object.assign({}, state, { journals: action.payload });
+      newState = Object.assign({}, state);
+      newState.journals.current = action.payload;
       return newState;
     default:
       return state;
