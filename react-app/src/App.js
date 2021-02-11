@@ -11,10 +11,11 @@ import Dashboard from "./components/Dashboard";
 function App() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [isLoaded, setIsLoaded] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
   
-  useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(false));
+  useEffect(async () => {
+    await dispatch(sessionActions.restoreUser())
+    setIsLoaded(true)
   }, [dispatch]);
 
   return (
@@ -22,13 +23,13 @@ function App() {
       <NavBar isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/dashboard" exact>
-            {sessionUser && <Dashboard />}
-            {!sessionUser && <Redirect to="/" />}
-          </Route>
           <Route path="/" exact>
             {sessionUser && <Redirect to="/dashboard" />}
             <SplashPage />
+          </Route>
+          <Route path="/dashboard" exact>
+            {sessionUser && <Dashboard />}
+            {!sessionUser && <Redirect to="/" />}
           </Route>
         </Switch>
       )}

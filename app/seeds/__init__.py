@@ -1,6 +1,9 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
-
+from .journal_entries import seed_journals, undo_journals
+from .drawings import seed_drawings, undo_drawings
+from .friendships import seed_friends, undo_friends
+from .messages import seed_messages, undo_messages
 
 seed_commands = AppGroup('seed')
 

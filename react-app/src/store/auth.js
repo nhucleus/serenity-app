@@ -14,9 +14,9 @@ export const login = ({ credentials, password }) => async (dispatch) => {
   const res = await fetch('/api/auth/login', {
     method: 'POST',
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ credentials, password })
+    body: JSON.stringify({ "email": credentials, password })
   });
-  if(res.ok) {
+  if (res.ok) {
     const data = await res.json()
     dispatch(setUser(data));
   }
@@ -24,9 +24,13 @@ export const login = ({ credentials, password }) => async (dispatch) => {
 };
 
 export const restoreUser = () => async (dispatch) => {
-  const res = await fetch('/api/auth');
-  if(res.ok){
-    const data = await res.json()
+  const res = await fetch('/api/auth', {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await res.json()
+  if (!data.errors){
     dispatch(setUser(data));
   }
   return res;

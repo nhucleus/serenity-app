@@ -9,7 +9,9 @@ class Message(db.Model):
   body = db.Column(db.String(500), nullable=False)
   friend_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
-  user = db.relationship("User", back_populates="messages")
+  # user = db.relationship("User", back_populates="messages")
+  sender = db.relationship("User", foreign_keys=user_id)
+  recipient = db.relationship("User", foreign_keys=friend_id)
   
 
 def to_dict(self):

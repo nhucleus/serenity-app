@@ -1,4 +1,5 @@
 from .db import db
+from .friendship import Friendship
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
@@ -12,23 +13,25 @@ class User(db.Model, UserMixin):
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
   
-  friends = db.Table(
-    "friends",
-    db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
-    db.Column("friend_id", db.Integer, db.ForeignKey("users.id"))
-  )
+  # friends = db.Table(
+  #   "friends",
+  #   db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
+  #   db.Column("friend_id", db.Integer, db.ForeignKey("users.id"))
+  # )
 
-  friendships = db.relationship(
-    "User",
-    secondary=friends,
-    primaryjoin=(friends.c.user_id == id),
-    secondaryjoin=(friends.c.friend_id == id),
-    backref=db.backref("friends", lazy="dynamic"),
-    lazy="dynamic"
-  )
+  # friendships = db.relationship(
+  #   "User",
+  #   secondary=friends,
+  #   primaryjoin=(friends.c.user_id == id),
+  #   secondaryjoin=(friends.c.friend_id == id),
+  #   backref=db.backref("friends", lazy="dynamic"),
+  #   lazy="dynamic"
+  # )
   journal_entries = db.relationship("Journal", back_populates="user")
   drawings = db.relationship("Drawing", back_populates="user")
-  messages = db.relationship("Message", back_populates="user")
+  # messages = db.relationship("Message", foreign_keys="messages.user_id")
+  friends = []
+  
 
 
   @property
@@ -39,6 +42,9 @@ class User(db.Model, UserMixin):
   def password(self, password):
     self.hashed_password = generate_password_hash(password)
 
+  def get_friends(self):
+    friendships = Friendship.query.filter(Friendship.user_id == self.id).all()
+    self.friends = [friendship.friend for friendship in friendships]
   
   def check_password(self, password):
     return check_password_hash(self.password, password)
@@ -51,6 +57,18 @@ class User(db.Model, UserMixin):
       "last_name": self.last_name,
       "username": self.username,
       "email": self.email,
+      # "journal_entries": journal_entries.to_dict(),
+      # "friendships": friendships
+      }
+
+  def to_dict_full(self):
+    self.get_friends()
+    return {
+      "id": self.id,
+      "first_name": self.first_name,
+      "last_name": self.last_name,
+      "username": self.username,
+      "email": self.email,
       "journal_entries": journal_entries.to_dict(),
-      "friendships": friendships
+      "friends": [user.to_dict() for user in self.friends]
       }

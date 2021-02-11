@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 
-from .models import db, User, Journal, Drawing, Message
+from .models import db, User, Journal, Drawing, Friendship, Message
 from .api.auth_routes import auth_routes
 from .api.journal_routes import journal_routes
 from .api.canvas_routes import canvas_routes
