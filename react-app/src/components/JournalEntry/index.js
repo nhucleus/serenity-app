@@ -1,7 +1,7 @@
 import "./JournalEntry.css";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createJournalEntry } from "../../store/entries"
+import { createJournalEntry, editJournalEntry } from "../../store/entries"
 
 
 const JournalEntry = ({onClose}) => {
@@ -24,7 +24,13 @@ const JournalEntry = ({onClose}) => {
       title,
       body,
     }
-    dispatch(createJournalEntry(entry));
+    if (current) {
+      entry.id = current.id
+      dispatch(editJournalEntry(entry))
+    } else {
+      dispatch(createJournalEntry(entry));
+    }
+    
     onClose()
 
   };
@@ -32,13 +38,13 @@ const JournalEntry = ({onClose}) => {
   return (
     <div className="journal-entry-container">
       <div className="journal-entry-header">
-        New Journal Entry
+        {current ? "Edit Today's Entry" : "New Journal Entry"}
       </div>
       <div className="journal-entry-title-input-container">
-        <input value={title} onChange={(event) => setTitle(event.target.value)} className="journal-entry-title-input" type="text" placeholder="Title..." />
+        <input value={title} onChange={(event) => setTitle(event.target.value)} className="journal-entry-title-input" type="text" placeholder="Title" />
       </div>
       <div className="journal-entry-body-input-container">
-        <textarea value={body} onChange={(event) => setBody(event.target.value)} className="journal-entry-body-input" placeholder="Body..." />
+        <textarea value={body} onChange={(event) => setBody(event.target.value)} className="journal-entry-body-input" />
       </div>
       <div className="journal-entry-image-input-container">
         placeholder

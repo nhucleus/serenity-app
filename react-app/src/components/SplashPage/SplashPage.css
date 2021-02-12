@@ -1,6 +1,6 @@
 .splash-container {
   display: flex;
-  background-image: url("./cherryblossom.gif");
+  background-image: url("./splashbg.gif");
   height: 100vh;
   background-position: center;
 	background-repeat: no-repeat;

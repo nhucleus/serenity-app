@@ -40,3 +40,16 @@ body {
 .nav-bar > * {
   list-style: none;
 }
+
+.lavender-img {
+  height: 98px;
+}
+
+.nav-bar-button {
+  background: transparent;
+  height: 100px;
+  width: 100px;
+  border-style: none;
+  color: white;
+  font-weight: bold;
+}

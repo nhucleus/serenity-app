@@ -5,14 +5,14 @@ import "./LoginForm.css";
 
 function LoginForm() {
   const dispatch = useDispatch();
-  const [credentials, setCredentials] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(sessionActions.login({ credentials, password }))
+    dispatch(sessionActions.login({ email, password }))
   };
 
   return (
@@ -27,8 +27,8 @@ function LoginForm() {
           <input
             placeholder="Username or Email"
             type="text"
-            value={credentials}
-            onChange={(e) => setCredentials(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <input

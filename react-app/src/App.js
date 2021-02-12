@@ -6,6 +6,7 @@ import * as sessionActions from "./store/auth";
 import NavBar from "./components/NavBar";
 import SplashPage from "./components/SplashPage";
 import Dashboard from "./components/Dashboard";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

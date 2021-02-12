@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import * as sessionActions from "../../store/auth";
+import Lavender from "./lavender.png";
 import "./NavBar.css";
 
 
@@ -12,12 +13,12 @@ const NavBar = ({ isLoaded }) => {
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch()
 
-  const demoEmail = "demo@aa.io";
-  const demoPassword = "password";
+  const email = "demo@aa.io";
+  const password = "password";
 
   const handleDemoClick = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.login({ demoEmail, demoPassword }))
+    dispatch(sessionActions.login({ email, password }))
   }
 
   let sessionLinks;
@@ -28,7 +29,7 @@ const NavBar = ({ isLoaded }) => {
   } else {
     sessionLinks = (
       <>
-        <button onClick={handleDemoClick}>Demo Login</button>
+        <button className="nav-bar-button" onClick={handleDemoClick}>Demo Login</button>
         <LoginFormModal />
         <SignupFormModal />
       </>
@@ -43,6 +44,7 @@ const NavBar = ({ isLoaded }) => {
             <h1>Serenity</h1>
           </NavLink>
         </li>
+        <li><img className="lavender-img" src={Lavender} /></li>
         <li>{isLoaded && sessionLinks}</li>
       </ul>
     </div>

@@ -1,0 +1,22 @@
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footer-ul {
+  list-style: none;
+  margin: 20px 0 0 ;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 100px;
+  width: 100%;
+}
+
+.footer-links {
+  font-weight: bold;
+  padding: 10px 5px;
+  font-size: .80em;
+}

@@ -22,6 +22,7 @@
 .journal-entry-title-input {
   width: 100%;
   height: 45px;
+  font-family: 'Caveat', cursive;
   font-size: 28px;
   border: 1px solid rgb(164, 164, 164);
   outline: none;
@@ -36,6 +37,11 @@
   height: 300px;
   margin-top: 10px;
   margin-bottom: 20px;
+  font-family: 'Caveat', cursive;
+}
+
+input[type="text"]::placeholder {  
+  text-align: center; 
 }
 
 .journal-entry-body-input {
@@ -60,6 +66,7 @@
   width: 160px;
   border: none;
   color: white;
+  font-weight: bold;
   outline: none;
   cursor: pointer;
   border-radius: 6px;

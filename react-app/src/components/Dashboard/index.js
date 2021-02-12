@@ -1,14 +1,22 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import {useDispatch} from "react-redux"
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import "./Dashboard.css";
 import JournalModal from "../JournalModal";
 import JournalEntry from "../JournalEntry";
-
+import { fetchCurrentJournal, fetchAllJournalEntries } from "../../store/entries";
+ 
 
 const localizer = momentLocalizer(moment);
 
 function Dashboard() {
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(fetchCurrentJournal())
+    dispatch(fetchAllJournalEntries())
+  },[])
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState();
   const [events, setEvents] = useState([
@@ -57,7 +65,7 @@ function Dashboard() {
         views={['month']}
         onSelectEvent={(event) => eventClick(event)}
 
-        style={{ height: 800 }}
+        style={{ height: "80vh" }}
       />
       <JournalModal open={modalOpen} onClose={() => setModalOpen(false)}>
         {modalType === 1 && <JournalEntry onClose={() => setModalOpen(false)}/>}

@@ -10,11 +10,11 @@ const removeUser = () => ({
   type: REMOVE_USER
 });
 
-export const login = ({ credentials, password }) => async (dispatch) => {
+export const login = ({ email, password }) => async (dispatch) => {
   const res = await fetch('/api/auth/login', {
     method: 'POST',
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ "email": credentials, password })
+    body: JSON.stringify({ email, password })
   });
   if (res.ok) {
     const data = await res.json()
