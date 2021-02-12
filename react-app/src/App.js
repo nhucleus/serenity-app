@@ -9,6 +9,7 @@ import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
 import Drawer from "./components/Drawer";
 import AudioPlayer from "./components/Audio";
+import JournalEntryList from "./components/JournalEntryList"
 
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
           <Route path="/" exact>
             {sessionUser && <Redirect to="/dashboard" />}
             <SplashPage />
+          </Route>
+          <Route path="/entries/journal">
+            <JournalEntryList />
           </Route>
           <Route path="/dashboard" exact>
             {sessionUser && <Dashboard />}

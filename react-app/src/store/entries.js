@@ -2,6 +2,7 @@ const CREATE_NEW_JOURNAL = 'entries/createNewJournal';
 const LOAD_CURRENT_JOURNAL = 'entries/loadCurrentJournal'
 const EDIT_CURRENT_JOURNAL = 'entries/editCurrentJournal'
 const LOAD_ALL_JOURNAL_ENTRIES = 'entries/loadAllJournalEntries'
+const LOAD_JOURNAL_ENTRIES_LIST = 'entries/loadJournalEntriesList'
 
 const loadJournalEntry = (entry) => ({
   type: CREATE_NEW_JOURNAL,
@@ -10,6 +11,11 @@ const loadJournalEntry = (entry) => ({
 
 const loadAllJournalEntries = (entries) => ({
   type: LOAD_ALL_JOURNAL_ENTRIES,
+  payload: entries
+});
+
+const loadJournalEntriesList = (entries) => ({
+  type: LOAD_JOURNAL_ENTRIES_LIST,
   payload: entries
 });
 
@@ -27,43 +33,51 @@ const loadEditJournal = (entry) => ({
 export const createJournalEntry = (entry) => async (dispatch) => {
   const res = await fetch("/api/journal/new", {
     method: 'POST',
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(entry)
   });
   const data = await res.json();
-  if(!res.errors) {
+  if (!res.errors) {
     dispatch(loadJournalEntry(data));
   }
+};
 
-}
 export const editJournalEntry = (entry) => async (dispatch) => {
   const res = await fetch(`/api/journal/${entry.id}/edit`, {
     method: 'PUT',
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(entry)
   });
   const data = await res.json();
-  if(!res.errors) {
+  if (!res.errors) {
     dispatch(loadEditJournal(data));
   }
-}
+};
 
 
 export const fetchCurrentJournal = () => async (dispatch) => {
   const res = await fetch("/api/journal/current");
   const data = await res.json();
-  if(!data.errors) {
+  if (!data.errors) {
     dispatch(loadCurrentJournal(data));
   }
-}
+};
 
 export const fetchAllJournalEntries = () => async (dispatch) => {
   const res = await fetch("/api/journal/entries");
   const data = await res.json();
-  if(!data.errors) {
+  if (!data.errors) {
     dispatch(loadAllJournalEntries(data["journal_entries"]));
   }
-}
+};
+
+export const fetchJournalEntriesLimit = (page) => async (dispatch) => {
+  const res = await fetch(`/api/journal/entries/${page}`);
+  const data = await res.json();
+  if (!data.errors) {
+    dispatch(loadJournalEntriesList(data["journal_entries"]));
+  }
+};
 
 const initialState = { journals: {all: {}, current: null} }
 
@@ -83,6 +97,10 @@ function reducer(state = initialState, action) {
       newState = Object.assign({}, state);
       newState.journals.all = action.payload;
       return newState;
+    case LOAD_JOURNAL_ENTRIES_LIST:
+      newState = Object.assign({}, state);
+      newState.journals.list = {...newState.journals.list, ...action.payload};
+      return newState;
     case EDIT_CURRENT_JOURNAL:
       newState = Object.assign({}, state);
       newState.journals.current = action.payload;
@@ -90,6 +108,6 @@ function reducer(state = initialState, action) {
     default:
       return state;
   }
-}
+};
 
 export default reducer;

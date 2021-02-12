@@ -4,7 +4,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import "./Dashboard.css";
 import JournalModal from "../JournalModal";
-import JournalEntry from "../JournalEntry";
+import NewJournalEntry from "../NewJournalEntry";
 import { fetchCurrentJournal, fetchAllJournalEntries } from "../../store/entries";
  
 
@@ -68,7 +68,7 @@ function Dashboard() {
         style={{ height: "80vh" }}
       />
       <JournalModal open={modalOpen} onClose={() => setModalOpen(false)}>
-        {modalType === 1 && <JournalEntry onClose={() => setModalOpen(false)}/>}
+        {modalType === 1 && <NewJournalEntry onClose={() => setModalOpen(false)}/>}
         {/* {modalType === 2 && <DrawEntry />}
         {modalType === 3 && <NewComment />} */}
       </JournalModal>
