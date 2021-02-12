@@ -7,6 +7,8 @@ import NavBar from "./components/NavBar";
 import SplashPage from "./components/SplashPage";
 import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
+import Drawer from "./components/Drawer";
+import AudioPlayer from "./components/Audio";
 
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
   return (
     <>
       <NavBar isLoaded={isLoaded} />
+      {sessionUser && <Drawer />}
       {isLoaded && (
         <Switch>
           <Route path="/" exact>
@@ -35,6 +38,7 @@ function App() {
         </Switch>
       )}
       <Footer />
+      <AudioPlayer />
     </>
   );
 }
