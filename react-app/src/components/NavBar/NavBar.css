@@ -50,6 +50,8 @@ body {
   height: 100px;
   width: 100px;
   border-style: none;
+  outline: none;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }

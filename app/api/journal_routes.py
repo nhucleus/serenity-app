@@ -18,7 +18,7 @@ def journal_entries():
 @journal_routes.route('/entries/<int:page>')
 @login_required
 def journal_entries_list(page):
-  journal_entries = Journal.query.filter(Journal.user_id == current_user.id).offset(page * 10).limit(10)
+  journal_entries = Journal.query.filter(Journal.user_id == current_user.id).order_by(Journal.created_at.desc()).offset(page * 10).limit(10)
   journal_entries_list = [journal.to_dict() for journal in journal_entries]
   return {"journal_entries": {entry["id"]: entry for entry in journal_entries_list}}
 
