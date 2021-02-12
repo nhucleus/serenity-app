@@ -18,7 +18,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: 1px solid black; */
 }
 
 .drawer-arrow {
@@ -98,4 +97,14 @@
 
 .drawer-user-username {
   font-weight: bold;
+}
+
+.drawer-links {
+  padding: 20px;
+}
+
+.drawer-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(155, 111, 180);
 }

@@ -24,7 +24,7 @@ const Drawer = () => {
                     <span className="drawer-user-username">{user.username}</span>
                     </div>)}
                 <div className="drawer-links">
-                    <Link onClick={() => setOpen(false)} to="/entries/journal">Your journal entries</Link>
+                    <Link className="drawer-link" onClick={() => setOpen(false)} to="/entries/journal">Your journal entries</Link>
                 </div>
             </div>
         </div>

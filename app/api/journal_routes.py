@@ -2,8 +2,12 @@ from .auth_routes import validation_errors_to_error_messages
 from flask import Blueprint, request
 from app.models import Journal, db
 from flask_login import login_required, current_user
+from werkzeug.utils import secure_filename
+from ..helpers import *
+from ..config import Config
 from ..forms import JournalForm
 import datetime
+
 
 journal_routes = Blueprint('journal', __name__)
 
@@ -65,16 +69,19 @@ def edit_journal_entry(id):
 def new_entry():
   form = JournalForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-  if form.validate_on_submit() and form.data['photo']:
+  if form.validate_on_submit() and request.files["image"]:
+    image = request.files["image"]
+    image.filename = secure_filename(image.filename)
+    imgUrl = upload_file_to_s3(image, Config.S3_BUCKET)
     journal_entry = Journal(
       user_id=current_user.id,
       title=form.data['title'],
       body=form.data['body'],
-      photo=form.data['photo'],
+      photo=imgUrl, 
     )
     db.session.add(journal_entry)
     db.session.commit()
-  elif form.validate_on_submit() and not form.data['photo']:
+  elif form.validate_on_submit() and not request.files["image"]:
     journal_entry = Journal(
       user_id=current_user.id,
       title=form.data['title'],
