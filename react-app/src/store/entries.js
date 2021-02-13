@@ -58,7 +58,7 @@ export const createJournalEntry = (entry, photo) => async (dispatch) => {
  
 };
 
-export const editJournalEntry = (entry, photo) => async (dispatch) => {
+export const editJournalEntry = (entry, photo, preview) => async (dispatch) => {
   if (photo) {
     const form = new FormData();
     form.append("title", entry.title)
@@ -73,6 +73,12 @@ export const editJournalEntry = (entry, photo) => async (dispatch) => {
       dispatch(loadEditJournal(data));
     }
   } else {
+    console.log(preview)
+    if(preview) {
+      entry.photoUrl = preview;
+    } else {
+      entry.photoUrl = "";
+    }
     const res = await fetch(`/api/journal/${entry.id}/edit`, {
       method: 'PUT',
       headers: { "Content-Type": "application/json" },

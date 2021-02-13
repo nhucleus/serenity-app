@@ -11,7 +11,7 @@ const NewJournalEntry = ({onClose}) => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [photo, setPhoto] = useState(null);
-  const [preview, setPreview] = useState(null)
+  const [preview, setPreview] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -43,7 +43,7 @@ const NewJournalEntry = ({onClose}) => {
       if (preview !== current.photo) {
         dispatch(editJournalEntry(entry, photo));
       } else {
-        dispatch(editJournalEntry(entry));
+        dispatch(editJournalEntry(entry, null, preview));
       }
     } else {
       if (photo) {

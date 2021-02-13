@@ -69,7 +69,7 @@ def edit_journal_entry(id):
     if form.validate_on_submit():
       journal_entry.title = form.data['title']
       journal_entry.body = form.data['body']
-      journal_entry.photo = ""
+      journal_entry.photo = form.data["photoUrl"]
       db.session.commit()
       return journal_entry.to_dict()
   return {'errors': validation_errors_to_error_messages(form.errors)}
