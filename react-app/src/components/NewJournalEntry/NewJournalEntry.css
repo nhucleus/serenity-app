@@ -1,7 +1,6 @@
 .new-journal-entry-container {
   width: 600px;
-  height: 650px;
-  /* border: 1px solid rgb(164, 164, 164); */
+  min-height: 650px;
   box-shadow: -1px -1px 10px 1px rgb(225, 225, 225);
   display: flex;
   flex-direction: column;
@@ -10,7 +9,7 @@
 }
 
 .journal-entry-header {
-  font-family: 'Caveat', cursive;
+  font-family: "Caveat", cursive;
   font-weight: 700;
   font-size: 45px;
   padding: 20px;
@@ -22,14 +21,14 @@
 .journal-entry-title-input {
   width: 100%;
   height: 45px;
-  font-family: 'Caveat', cursive;
+  font-family: "Caveat", cursive;
   font-size: 28px;
   border: 1px solid rgb(164, 164, 164);
   outline: none;
 }
 
 .journal-entry-title-input:focus {
-  border: 1px solid rgb(155, 111, 180);
+  border: 1px solid rgb(213, 175, 235);
 }
 
 .journal-entry-body-input-container {
@@ -37,11 +36,11 @@
   height: 300px;
   margin-top: 10px;
   margin-bottom: 20px;
-  font-family: 'Caveat', cursive;
+  font-family: "Caveat", cursive;
 }
 
-input[type="text"]::placeholder {  
-  text-align: center; 
+input[type="text"]::placeholder {
+  text-align: center;
 }
 
 .journal-entry-body-input {
@@ -55,7 +54,7 @@ input[type="text"]::placeholder {
 }
 
 .journal-entry-body-input:focus {
-  border: 1px solid rgb(155, 111, 180);
+  border: 1px solid rgb(213, 175, 235);
 }
 
 .journal-entry-submit {
@@ -74,4 +73,66 @@ input[type="text"]::placeholder {
 
 .journal-entry-submit:hover {
   background-color: rgb(191, 138, 223);
+}
+
+.journal-entry-submit:hover:active {
+  background-color: rgb(223, 189, 244);
+}
+
+#photo-input {
+  display: none;
+}
+
+.photo-buttons {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.upload-heart {
+  font-size: 45px;
+  padding-top: 2px;
+  cursor: pointer;
+  color: rgb(155, 111, 180);
+}
+
+.upload-heart:hover {
+  color: rgb(191, 138, 223);
+}
+
+.upload-heart:hover:active {
+  color: rgb(223, 189, 244);
+}
+
+.remove-heart {
+  font-size: 39px;
+  margin-left: 12px;
+  cursor: pointer;
+  color: rgb(155, 111, 180);
+}
+
+.remove-heart:hover {
+  color: rgb(191, 138, 223);
+}
+
+.remove-heart:hover:active {
+  color: rgb(223, 189, 244);
+}
+
+.journal-entry-photo-label {
+  font-family: "Caveat", cursive;
+  font-size: 22px;
+}
+
+.journal-entry-photo-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo-preview {
+  max-height: 250px;
+  margin-top: 10px;
+  margin-bottom: 80px;
+  box-shadow: -1px 3px 10px 1px rgb(190, 190, 190);
 }

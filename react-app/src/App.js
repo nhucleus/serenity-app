@@ -8,7 +8,6 @@ import SplashPage from "./components/SplashPage";
 import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
 import Drawer from "./components/Drawer";
-import AudioPlayer from "./components/Audio";
 import JournalEntryList from "./components/JournalEntryList"
 
 
@@ -42,7 +41,6 @@ function App() {
         </Switch>
       )}
       <Footer />
-      <AudioPlayer />
     </>
   );
 }

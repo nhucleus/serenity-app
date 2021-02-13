@@ -17,7 +17,9 @@ function LoginForm() {
 
   return (
     <div className="login-container">
-      <h1 className="login">Log In</h1>
+      <div className="login-form-header">
+        Log In
+      </div>
       <form className="login-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
@@ -25,20 +27,22 @@ function LoginForm() {
           ))}
         </ul>
           <input
-            placeholder="Username or Email"
+            className="login-form-input"
+            placeholder="Email"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <input
+        <input
+            className="login-form-input"
             placeholder="Password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        <button type="submit">Log In</button>
+        <button className="login-form-submit" type="submit">Log In</button>
       </form>
     </div>
   );

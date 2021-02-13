@@ -1,23 +1,55 @@
-* {
-  box-sizing: border-box;
-}
-
-.signup-container {
+.signup-form-container {
+  width: 300px;
+  height: 470px;
+  box-shadow: -1px -1px 10px 1px rgb(225, 225, 225);
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  border-radius: 10px;
 }
 
 .signup-form {
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.signup-form > *{
-  margin: 10px;
+.signup-form-header {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 45px;
+  padding: 20px;
 }
 
-h1.signup {
-  font-family: Arial, Helvetica, sans-serif;
+.signup-form-input {
+  width: 90%;
+  height: 45px;
+  font-size: 20px;
+  border: 1px solid rgb(164, 164, 164);
+  outline: none;
+}
+
+.signup-form-input:focus {
+  border: 1px solid rgb(155, 111, 180);
+}
+
+input[type="password"]::placeholder {  
+  text-align: center; 
+}
+
+.signup-form-submit {
+  background-color: rgb(155, 111, 180);
+  height: 40px;
+  width: 90%;
+  border: none;
+  color: white;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
+.signup-form-submit:hover {
+  background-color: rgb(191, 138, 223);
 }

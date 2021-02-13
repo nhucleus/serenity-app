@@ -1,7 +1,7 @@
 .splash-container {
   display: flex;
-  background-image: url("./splashbg.gif");
-  height: 100vh;
+  background-image: url("./splash.gif");
+  height: 80vh;
   background-position: center;
 	background-repeat: no-repeat;
   background-size: cover;

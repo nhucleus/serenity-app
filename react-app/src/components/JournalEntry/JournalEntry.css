@@ -1,4 +1,8 @@
 .journal-entry-container {
-    width: 400px;
-    height: 500px;
+  width: 400px;
+  height: 500px;
+}
+
+.journal-entry-photo img {
+  max-height: 250px;
 }

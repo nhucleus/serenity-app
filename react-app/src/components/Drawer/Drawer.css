@@ -107,4 +107,6 @@
   text-decoration: none;
   font-weight: bold;
   color: rgb(155, 111, 180);
+  cursor: pointer;
+  padding: 10px;
 }

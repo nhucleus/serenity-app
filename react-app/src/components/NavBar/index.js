@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import * as sessionActions from "../../store/auth";
 import Lavender from "./lavender.png";
+import AudioPlayer from "../Audio";
 import "./NavBar.css";
 
 
@@ -24,7 +24,7 @@ const NavBar = ({ isLoaded }) => {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <AudioPlayer />
     );
   } else {
     sessionLinks = (

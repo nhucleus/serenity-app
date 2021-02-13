@@ -26,13 +26,16 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="signup-container">
-      <h1 className="signup">Get Started</h1>
+    <div className="signup-form-container">
+      <div className="signup-form-header">
+        Sign Up
+      </div>
       <form className="signup-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <input
+          className="signup-form-input"
           placeholder="First Name"
           type="text"
           value={firstName}
@@ -40,6 +43,7 @@ const SignupForm = () => {
           required
         />
         <input
+          className="signup-form-input"
           placeholder="Last Name"
           type="text"
           value={lastName}
@@ -47,34 +51,38 @@ const SignupForm = () => {
           required
         />
         <input
+            className="signup-form-input"
             placeholder="Email"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <input
+        <input
+            className="signup-form-input"
             placeholder="Username"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-          <input
+        <input
+            className="signup-form-input"
             placeholder="Password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <input
+        <input
+            className="signup-form-input"
             placeholder="Confirm Password"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-        <button type="submit">Sign Up</button>
+        <button className="signup-form-submit" type="submit">Sign Up</button>
       </form>
     </div>
   );

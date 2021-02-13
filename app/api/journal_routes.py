@@ -56,11 +56,22 @@ def edit_journal_entry(id):
   journal_entry = Journal.query.get(id)
   form = JournalForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-  if form.validate_on_submit() and not form.data['photo']:
-    journal_entry.title = form.data['title']
-    journal_entry.body = form.data['body']
+  if "image" in request.files:
+    image = request.files["image"]
+    image.filename = secure_filename(image.filename)
+    imgUrl = upload_file_to_s3(image, Config.S3_BUCKET)
+    journal_entry.title = request.form['title']
+    journal_entry.body = request.form['body']
+    journal_entry.photo = imgUrl
     db.session.commit()
     return journal_entry.to_dict()
+  elif form.validate_on_submit():
+    if form.validate_on_submit():
+      journal_entry.title = form.data['title']
+      journal_entry.body = form.data['body']
+      journal_entry.photo = ""
+      db.session.commit()
+      return journal_entry.to_dict()
   return {'errors': validation_errors_to_error_messages(form.errors)}
   
 
@@ -69,19 +80,21 @@ def edit_journal_entry(id):
 def new_entry():
   form = JournalForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-  if form.validate_on_submit() and request.files["image"]:
+  if "image" in request.files:
     image = request.files["image"]
     image.filename = secure_filename(image.filename)
     imgUrl = upload_file_to_s3(image, Config.S3_BUCKET)
     journal_entry = Journal(
       user_id=current_user.id,
-      title=form.data['title'],
-      body=form.data['body'],
+      title=request.form['title'],
+      body=request.form['body'],
       photo=imgUrl, 
+      created_at=datetime.datetime.now()
     )
     db.session.add(journal_entry)
     db.session.commit()
-  elif form.validate_on_submit() and not request.files["image"]:
+    return journal_entry.to_dict()
+  elif form.validate_on_submit():  
     journal_entry = Journal(
       user_id=current_user.id,
       title=form.data['title'],
@@ -91,6 +104,7 @@ def new_entry():
     db.session.add(journal_entry)
     db.session.commit()
     return journal_entry.to_dict()
+  
   return {'errors': validation_errors_to_error_messages(form.errors)}
 
 

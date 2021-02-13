@@ -30,27 +30,58 @@ const loadEditJournal = (entry) => ({
 });
 
 
-export const createJournalEntry = (entry) => async (dispatch) => {
-  const res = await fetch("/api/journal/new", {
-    method: 'POST',
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(entry)
-  });
-  const data = await res.json();
-  if (!res.errors) {
-    dispatch(loadJournalEntry(data));
+export const createJournalEntry = (entry, photo) => async (dispatch) => {
+  if (photo) {
+    const form = new FormData();
+    form.append("title", entry.title)
+    form.append("body", entry.body)
+    form.append("image", photo)
+    const res = await fetch("/api/journal/new", {
+      method: 'POST',
+      body: form
+    });
+    const data = await res.json();
+    if (!res.errors) {
+      dispatch(loadJournalEntry(data));
+    }
+  } else {
+    const res = await fetch("/api/journal/new", {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(entry)
+    });
+    const data = await res.json();
+    if (!res.errors) {
+      dispatch(loadJournalEntry(data));
+    }
   }
+ 
 };
 
-export const editJournalEntry = (entry) => async (dispatch) => {
-  const res = await fetch(`/api/journal/${entry.id}/edit`, {
-    method: 'PUT',
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(entry)
-  });
-  const data = await res.json();
-  if (!res.errors) {
-    dispatch(loadEditJournal(data));
+export const editJournalEntry = (entry, photo) => async (dispatch) => {
+  if (photo) {
+    const form = new FormData();
+    form.append("title", entry.title)
+    form.append("body", entry.body)
+    form.append("image", photo)
+    const res = await fetch(`/api/journal/${entry.id}/edit`, {
+      method: 'PUT',
+      body: form
+    });
+    const data = await res.json();
+    if (!res.errors) {
+      dispatch(loadEditJournal(data));
+    }
+  } else {
+    const res = await fetch(`/api/journal/${entry.id}/edit`, {
+      method: 'PUT',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(entry)
+    });
+    const data = await res.json();
+    if (!res.errors) {
+      dispatch(loadEditJournal(data));
+    }
   }
 };
 
