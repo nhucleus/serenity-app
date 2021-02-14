@@ -1,8 +1,18 @@
 .splash-container {
   display: flex;
   background-image: url("./splash.gif");
-  height: 80vh;
+  height: 100vh;
   background-position: center;
-	background-repeat: no-repeat;
+  background-repeat: no-repeat;
   background-size: cover;
+  padding-top: 100px;
+}
+
+.title {
+  font-family: "Caveat", cursive;
+  font-size: 50px;
+  color: rgb(14, 85, 12);
+  text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.5),
+    1px 1px 0 rgba(0, 0, 0, 0.25), 3px 3px 3px rgba(0, 0, 0, 0.25),
+    10px 10px 20px rgba(0, 0, 0, 0.5), 20px 40px 40px rgba(0, 0, 0, 0.5);
 }

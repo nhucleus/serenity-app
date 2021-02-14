@@ -258,13 +258,23 @@ button.rbc-input::-moz-focus-inner {
   cursor: inherit;
   pointer-events: none;
 }
+
+.rbc-off-range {
+  pointer-events: none;
+}
+
+.rbc-event:hover {
+  background-color: rgb(197, 148, 228);
+}
+
 .rbc-event.rbc-selected,
 .rbc-day-slot .rbc-selected.rbc-background-event {
   background-color: rgb(155, 111, 180);
 }
 .rbc-event:focus,
 .rbc-day-slot .rbc-background-event:focus {
-  outline: 5px auto rgb(217, 184, 238);
+  outline: none;
+  /* 5px auto rgb(217, 184, 238); */
 }
 
 .rbc-event-label {

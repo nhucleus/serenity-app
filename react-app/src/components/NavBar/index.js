@@ -41,7 +41,7 @@ const NavBar = ({ isLoaded }) => {
       <ul className="nav-bar">
         <li className="logo-container">
           <NavLink exact to={ sessionUser ? '/dashboard' : '/' } id="title">
-            <h1>Serenity</h1>
+            <h1 className="title-text">Serenity</h1>
             <img className="lavender-img" src={Lavender} />
           </NavLink>
         </li>

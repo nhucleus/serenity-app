@@ -1,0 +1,220 @@
+.new-draw-container {
+  box-shadow: -1px -1px 10px 1px rgb(225, 225, 225);
+  display: flex;
+  flex-direction: column;
+}
+
+.new-draw-header,
+.new-draw-subheader {
+  text-align: center;
+}
+
+.new-draw-header {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 50px;
+  padding-top: 20px;
+}
+
+.new-draw-subheader {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.canvas-entry {
+  border: 1px solid rgb(210, 210, 210);
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+.canvas-and-picker {
+  display: flex;
+}
+
+.color-picker {
+  width: 120px;
+  height: 500px;
+  margin: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.color-choice {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  /* border: 1px solid black; */
+}
+
+.color-choice:hover {
+  filter: brightness(110%);
+}
+
+.color-choice.dark-red {
+  background-color: #9e1515;
+}
+.color-choice.red {
+  background-color: #e12120;
+}
+.color-choice.orange {
+  background-color: #fa8223;
+}
+.color-choice.yellow {
+  background-color: #fbb124;
+}
+.color-choice.dark-green {
+  background-color: #06a40b;
+}
+.color-choice.light-green {
+  background-color: #a6d609;
+}
+.color-choice.purple {
+  background-color: #6b3fa0;
+}
+.color-choice.lavender {
+  background-color: #a68cc6;
+}
+.color-choice.blue {
+  background-color: #3895d3;
+}
+.color-choice.light-blue {
+  background-color: #bcdeff;
+}
+.color-choice.brown {
+  background-color: #49311d;
+}
+.color-choice.tan {
+  background-color: #dc9456;
+}
+.color-choice.black {
+  background-color: black;
+}
+.color-choice.grey {
+  background-color: grey;
+}
+
+.canvas-utils {
+  width: 600px;
+  display: flex;
+  margin-left: 25px;
+  margin-top: 40px;
+  justify-content: space-evenly;
+}
+
+.save-draw-button {
+  width: 600px;
+  margin-left: 25px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.drawing-submit {
+  background-color: rgb(155, 111, 180);
+  height: 40px;
+  width: 160px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.drawing-submit:hover {
+  background-color: rgb(191, 138, 223);
+}
+
+.drawing-submit:hover:active {
+  background-color: rgb(223, 189, 244);
+}
+
+.canvas-utils-button {
+  background-color: rgb(155, 111, 180);
+  height: 35px;
+  width: 140px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.canvas-utils-button:hover {
+  background-color: rgb(191, 138, 223);
+}
+
+.canvas-utils-button:hover:active {
+  background-color: rgb(223, 189, 244);
+}
+
+.brush-size-header {
+  display: flex;
+  align-items: center;
+}
+
+.choice-one-circle {
+  margin-left: 14px;
+  margin-top: 2px;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+}
+
+.choice-two-circle {
+  margin-left: 18px;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.choice-three-circle {
+  margin-top: -2px;
+  margin-left: 8px;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+}
+
+.brush-size {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brush-choices {
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+  height: 50px;
+  /* align-items: center; */
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+.choice-text {
+  font-size: 13px;
+}
+
+.choice-text.one {
+  margin-top: 10px;
+}
+.choice-text.two {
+  margin-top: 8px;
+}
+.choice-text.three {
+  margin-top: 6px;
+}
+
+.brush-icon {
+  font-size: 22px;
+}
+
+.brush-size-text {
+  font-family: "Caveat", cursive;
+  font-size: 23px;
+}

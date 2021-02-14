@@ -1,7 +1,7 @@
 const CREATE_NEW_JOURNAL = 'entries/createNewJournal';
 const LOAD_CURRENT_JOURNAL = 'entries/loadCurrentJournal'
 const EDIT_CURRENT_JOURNAL = 'entries/editCurrentJournal'
-const LOAD_ALL_JOURNAL_ENTRIES = 'entries/loadAllJournalEntries'
+const LOAD_MONTH_JOURNAL_ENTRIES = 'entries/loadMonthJournalEntries'
 const LOAD_JOURNAL_ENTRIES_LIST = 'entries/loadJournalEntriesList'
 
 const loadJournalEntry = (entry) => ({
@@ -9,8 +9,8 @@ const loadJournalEntry = (entry) => ({
   payload: entry
 });
 
-const loadAllJournalEntries = (entries) => ({
-  type: LOAD_ALL_JOURNAL_ENTRIES,
+const loadMonthJournalEntries = (entries) => ({
+  type: LOAD_MONTH_JOURNAL_ENTRIES,
   payload: entries
 });
 
@@ -100,11 +100,11 @@ export const fetchCurrentJournal = () => async (dispatch) => {
   }
 };
 
-export const fetchAllJournalEntries = () => async (dispatch) => {
+export const fetchMonthJournalEntries = () => async (dispatch) => {
   const res = await fetch("/api/journal/entries");
   const data = await res.json();
   if (!data.errors) {
-    dispatch(loadAllJournalEntries(data["journal_entries"]));
+    dispatch(loadMonthJournalEntries(data["journal_entries"]));
   }
 };
 
@@ -116,23 +116,23 @@ export const fetchJournalEntriesLimit = (page) => async (dispatch) => {
   }
 };
 
-const initialState = { journals: {all: {}, current: null} }
+const initialState = { journals: {month: {}, current: null} }
 
 function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case CREATE_NEW_JOURNAL:
       newState = Object.assign({}, state);
-      newState.journals.all = {...newState.journals.all, [action.payload.id]: action.payload};
+      newState.journals.month = {...newState.journals.month, [action.payload.id]: action.payload};
       newState.journals.current = action.payload;
       return newState;
     case LOAD_CURRENT_JOURNAL:
       newState = Object.assign({}, state);
       newState.journals.current = action.payload;
       return newState;
-    case LOAD_ALL_JOURNAL_ENTRIES:
+    case LOAD_MONTH_JOURNAL_ENTRIES:
       newState = Object.assign({}, state);
-      newState.journals.all = action.payload;
+      newState.journals.month = action.payload;
       return newState;
     case LOAD_JOURNAL_ENTRIES_LIST:
       newState = Object.assign({}, state);
