@@ -15,8 +15,18 @@ journal_routes = Blueprint('journal', __name__)
 @journal_routes.route('/entries')
 @login_required
 def journal_entries():
-  journal_entries = Journal.query.filter(Journal.user_id == current_user.id).all()
-  journal_entries_list = [journal.to_dict() for journal in journal_entries]
+  def month_filter(entry):
+    if entry.created_at.month is month:
+      return True
+    else:
+      return False
+  date = datetime.datetime.now()
+  month = date.month
+  year = date.year
+  journal_entries = Journal.query.filter(Journal.user_id == current_user.id).limit(31)
+  filtered_entries = filter(month_filter, journal_entries)
+  journal_entries_list = [journal.to_dict() for journal in filtered_entries]
+  
   return {"journal_entries": {entry["id"]: entry for entry in journal_entries_list}}
 
 @journal_routes.route('/entries/<int:page>')
