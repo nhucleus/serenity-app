@@ -7,9 +7,9 @@ const Footer = () => {
   return (
     <div className="footer-container">
       <ul className="footer-ul">
-        <li><a className="footer-links" href="https://www.linkedin.com/in/nhu-yphan/"><AiOutlineLinkedin className="footer-icon"/> LinkedIn</a></li>
-        <li><a className="footer-links" href="https://github.com/nhucleus"><AiOutlineGithub className="footer-icon"/> GitHub</a></li>
-        <li><a className="footer-links" href="mailto: nhucleus@gmail.com"><AiOutlineMail className="footer-icon"/> Contact</a></li>
+        <li><a className="footer-links" href="https://www.linkedin.com/in/nhu-yphan/"><AiOutlineLinkedin className="footer-icon"/><span> LinkedIn</span></a></li>
+        <li><a className="footer-links" href="https://github.com/nhucleus"><AiOutlineGithub className="footer-icon"/><span> GitHub</span></a></li>
+        <li><a className="footer-links" href="mailto: nhucleus@gmail.com"><AiOutlineMail className="footer-icon"/><span> Contact</span></a></li>
       </ul>
     </div>
   )

@@ -1,0 +1,14 @@
+.play-button {
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  color: rgba(219, 214, 214, 0.418);
+}
+
+.play-button:hover {
+  color: rgba(219, 214, 214, 0.708);
+}
+
+.play-button:hover:active {
+  color: rgba(219, 214, 214, 0.884);
+}

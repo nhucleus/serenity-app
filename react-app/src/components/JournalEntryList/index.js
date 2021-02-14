@@ -17,6 +17,7 @@ const JournalEntryList = () => {
 
   return (
       <>
+      <div className="journal-header">Your Journal</div>
     {journalEntries && (
         <InfiniteScroll
             className="journal-entries-list-container"

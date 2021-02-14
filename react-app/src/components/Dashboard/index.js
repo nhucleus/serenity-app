@@ -19,6 +19,15 @@ function Dashboard() {
   },[])
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState();
+  const [submitted, setSubmitted] = useState(false);
+  const [notifText, setNotifText] = useState("")
+
+  useEffect(()=> {
+    setTimeout(() => {
+      setSubmitted(false)
+    }, 5000)
+  },[submitted])
+
   const [events, setEvents] = useState([
     {
       start: moment().toDate(),
@@ -57,6 +66,7 @@ function Dashboard() {
 
   return (
     <>
+    <div className={submitted ? "notification" : "notification hidden"}>{notifText}</div>
       <Calendar
         localizer={localizer}
         events={events}
@@ -65,15 +75,21 @@ function Dashboard() {
         views={['month']}
         onSelectEvent={(event) => eventClick(event)}
 
-        style={{ height: "80vh" }}
+        style={{ position: "fixed", top: "0px", bottom: "0", left: "0", right: "0", "margin-top": "110px", "margin-bottom": "80px"  }}
       />
       <JournalModal open={modalOpen} onClose={() => setModalOpen(false)}>
-        {modalType === 1 && <NewJournalEntry onClose={() => setModalOpen(false)}/>}
+        {modalType === 1 && <NewJournalEntry setSubmitted={(text) => {
+          setNotifText(text)
+          setTimeout(()=> {
+            setSubmitted(true)
+          }, 250)
+          
+          }} onClose={() => setModalOpen(false)}/>}
         {/* {modalType === 2 && <DrawEntry />}
         {modalType === 3 && <NewComment />} */}
       </JournalModal>
     </>
   )
-}
+};
 
 export default Dashboard;

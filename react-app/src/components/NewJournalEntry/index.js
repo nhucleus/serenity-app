@@ -6,13 +6,12 @@ import {RiHeartAddLine} from "react-icons/ri"
 import {FiMinusCircle} from "react-icons/fi"
 
 
-const NewJournalEntry = ({onClose}) => {
+const NewJournalEntry = ({onClose, setSubmitted}) => {
   const current = useSelector(state => state.entries.journals.current);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [photo, setPhoto] = useState(null);
   const [preview, setPreview] = useState(null);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,13 +44,16 @@ const NewJournalEntry = ({onClose}) => {
       } else {
         dispatch(editJournalEntry(entry, null, preview));
       }
+      setSubmitted("Journal entry successfully updated.");
     } else {
       if (photo) {
         dispatch(createJournalEntry(entry, photo));
       } else {
         dispatch(createJournalEntry(entry));
       }
+      setSubmitted("Journal entry successfully submitted.");
     }
+    
     
     onClose();
 

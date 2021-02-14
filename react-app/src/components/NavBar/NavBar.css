@@ -7,30 +7,35 @@ body {
 }
 
 #title {
-  font-family: 'Sacramento', cursive;
+  font-family: "Sacramento", cursive;
   font-size: larger;
   color: white;
   text-decoration: none;
-  text-shadow:
-    -1px -1px 0 rgba(255,255,255,.5),
-    1px 1px 0 rgba(0,0,0,.25),
-    3px 3px 3px rgba(0,0,0,.25),
-    10px 10px 20px rgba(0,0,0,.5),
-    20px 40px 40px rgba(0,0,0,.5); 
+  text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.5),
+    1px 1px 0 rgba(0, 0, 0, 0.25), 3px 3px 3px rgba(0, 0, 0, 0.25),
+    10px 10px 20px rgba(0, 0, 0, 0.5), 20px 40px 40px rgba(0, 0, 0, 0.5);
 }
 
 .nav-bar__container {
   display: flex;
   flex-direction: row;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 8;
 }
-
 
 .nav-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background: linear-gradient(0deg, rgba(191,138,223,0.4150035014005602) 0%, rgba(155,111,180,1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgb(230, 209, 243) 0%,
+    rgb(155, 111, 180, 1) 100%
+  );
   height: 100px;
   width: 100%;
   margin: 0;
@@ -41,8 +46,17 @@ body {
   list-style: none;
 }
 
+.logo-container {
+  position: relative;
+}
+
 .lavender-img {
-  height: 98px;
+  height: 125px;
+  width: 25px;
+  position: absolute;
+  top: 15px;
+  left: 45px;
+  transform: rotate(90deg);
 }
 
 .nav-bar-button {

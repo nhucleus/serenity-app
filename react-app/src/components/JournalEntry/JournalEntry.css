@@ -1,5 +1,5 @@
 .journal-entry-container {
-  width: 500px;
+  width: 600px;
   padding-top: 20px;
   padding-left: 25px;
   padding-right: 25px;
@@ -48,4 +48,31 @@
 .journal-entry-photo {
   padding-top: 30px;
   width: 100%;
+}
+
+.full-photo {
+  box-shadow: -1px 3px 10px 1px rgb(190, 190, 190);
+  max-height: 80vh;
+  max-width: 80vw;
+}
+
+.full-photo-container {
+  position: relative;
+}
+
+.photo-modal-close {
+  color: rgba(191, 191, 191, 0.75);
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.photo-modal-close:hover {
+  color: rgba(210, 210, 210, 0.75);
+}
+
+.photo-modal-close:hover:active {
+  color: rgba(225, 225, 225, 0.75);
 }

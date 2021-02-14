@@ -1,8 +1,15 @@
+import {useState} from "react";
 import "./JournalEntry.css";
+import JournalModal from "../JournalModal"
+import {RiCloseCircleLine} from "react-icons/ri"
 const months = ["January","February","March","April","May","June","July",
             "August","September","October","November","December"];
 
 const JournalEntry = ({ entry }) => {
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+
   const date = new Date(entry.created_at)
   return (
     <div className="journal-entry-container">
@@ -16,7 +23,14 @@ const JournalEntry = ({ entry }) => {
         {entry.body}
       </div>
       <div className="journal-entry-photo">
-        {entry.photo && <img src={entry.photo} />}
+        {entry.photo && <img onClick={() => setModalOpen(true)} src={entry.photo} />}
+        <JournalModal open={modalOpen} onClose={() => setModalOpen(false)}>
+          <div className="full-photo-container">
+            <img className="full-photo" src={entry.photo} />
+            <RiCloseCircleLine className="photo-modal-close" onClick={() => setModalOpen(false)}/>
+          </div>
+          
+        </JournalModal>
       </div>
     </div>
   )

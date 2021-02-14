@@ -30,17 +30,20 @@ function App() {
           <Route path="/" exact>
             {sessionUser && <Redirect to="/dashboard" />}
             <SplashPage />
+            <Footer />
           </Route>
           <Route path="/entries/journal">
+            {!sessionUser && <Redirect to="/" />}
             <JournalEntryList />
           </Route>
           <Route path="/dashboard" exact>
             {sessionUser && <Dashboard />}
             {!sessionUser && <Redirect to="/" />}
+            <Footer />
           </Route>
         </Switch>
       )}
-      <Footer />
+      
     </>
   );
 }
