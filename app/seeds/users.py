@@ -3,25 +3,25 @@ from app.models import db, User
 
 def seed_users():
   demo = User(first_name='Demo', last_name='User',
-              username='Demo', email='demo@aa.io', password='password')
+              username='Demo', email='demo@aa.io', password='password', avatar='https://cdn3.vectorstock.com/i/thumb-large/68/47/portrait-a-beautiful-asian-businesswoman-in-vector-27976847.jpg')
 
   demo1 = User(first_name='Cece', last_name='Love',
-              username='cecexlove', email='democece@aa.io', password='password')
+              username='cecexlove', email='democece@aa.io', password='password', avatar='https://www.publicdomainpictures.net/pictures/270000/nahled/avatar-people-person-business-u-15354603894rE.jpg')
   
   demo2 = User(first_name='Natalie', last_name='Brewer',
-              username='brewinuptrouble', email='demobrewer@aa.io', password='password')
+              username='brewinuptrouble', email='demobrewer@aa.io', password='password', avatar='https://image.freepik.com/free-vector/woman-profile-cartoon_18591-58475.jpg')
 
   demo3 = User(first_name='Devon', last_name='Duke',
-              username='dukexdevon', email='demoduke@aa.io', password='password')
+              username='dukexdevon', email='demoduke@aa.io', password='password', avatar='https://image.freepik.com/free-vector/woman-profile-cartoon_18591-58477.jpg')
   
   demo4 = User(first_name='Emily', last_name='Hosier',
-              username='emster', email='demoem@aa.io', password='password')
+              username='emster', email='demoem@aa.io', password='password', avatar='https://image.freepik.com/free-vector/woman-profile-cartoon_18591-58476.jpg')
 
   demo5 = User(first_name='Sara', last_name='Tran',
-              username='saraxtran', email='demotran@aa.io', password='password')
+              username='saraxtran', email='demotran@aa.io', password='password', avatar='https://cdn3.vectorstock.com/i/1000x1000/62/87/young-woman-profile-cartoon-vector-19116287.jpg')
 
   demo6 = User(first_name='Daniel', last_name='Miller',
-              username='bobbyxd', email='demobobby@aa.io', password='password')
+              username='bobbyxd', email='demobobby@aa.io', password='password', avatar='https://www.publicdomainpictures.net/pictures/270000/nahled/avatar-people-person-business-.jpg')
 
 
   db.session.add(demo)

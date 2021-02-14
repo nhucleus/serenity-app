@@ -2,20 +2,26 @@ import "./NewDrawEntry.css"
 import CanvasDraw from "react-canvas-draw";
 import {useState, useRef, useEffect} from "react";
 import {GrBrush} from "react-icons/gr"
+import {useDispatch} from "react-redux";
+import {createDrawing } from "../../store/entries"
 
-const NewDrawEntry = () => {
+const NewDrawEntry = ({addEvent}) => {
+    const dispatch = useDispatch()
   const [color, setColor] = useState("#a68cc6");
-  const [drawing, setDrawing] = useState();
+  const [image, setImage] = useState();
   const [brushSize, setBrushSize] = useState(6)
+   const [title, setTitle] = useState("");
   const drawRef = useRef();
 
-  const submitDrawing = () => {
-    return;
-  }
-
-  useEffect(() => {
+  const submitDrawing = async () => {
+    const canvas = {
+      title,
+      image
+    }
+    const drawing = await dispatch(createDrawing(canvas))
     console.log(drawing)
-  }, [drawing])
+    addEvent(drawing)
+  };
 
   return (
     <div className="new-draw-container">
@@ -25,7 +31,7 @@ const NewDrawEntry = () => {
 
         <CanvasDraw
           ref={drawRef}
-          onChange={() => setDrawing(drawRef.current.getSaveData())}
+          onChange={() => setImage(drawRef.current.getSaveData())}
           className="canvas-entry"
           hideGrid={true}
           canvasWidth={600}
@@ -75,6 +81,9 @@ const NewDrawEntry = () => {
         </div>
         </div>
         
+      </div>
+       <div className="journal-entry-title-input-container drawing">
+        <input value={title} onChange={(event) => setTitle(event.target.value)} className="journal-entry-title-input" type="text" placeholder="Title" />
       </div>
       <div className="canvas-utils">
         <button

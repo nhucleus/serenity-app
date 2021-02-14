@@ -19,7 +19,7 @@ const NavBar = ({ isLoaded }) => {
   const handleDemoClick = (e) => {
     e.preventDefault();
     dispatch(sessionActions.login({ email, password }))
-  }
+  };
 
   let sessionLinks;
   if (sessionUser) {
@@ -40,7 +40,7 @@ const NavBar = ({ isLoaded }) => {
     <div className="nav-bar__container">
       <ul className="nav-bar">
         <li className="logo-container">
-          <NavLink exact to={ sessionUser ? '/dashboard' : '/' } id="title">
+          <NavLink exact to={sessionUser ? '/dashboard' : '/'} id="title">
             <h1 className="title-text">Serenity</h1>
             <img className="lavender-img" src={Lavender} />
           </NavLink>
@@ -50,6 +50,6 @@ const NavBar = ({ isLoaded }) => {
       </ul>
     </div>
   );
-}
+};
 
 export default NavBar;

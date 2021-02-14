@@ -218,3 +218,16 @@
   font-family: "Caveat", cursive;
   font-size: 23px;
 }
+
+.journal-entry-title-input-container.drawing {
+  width: 600px;
+  margin-left: 25px;
+}
+
+.journal-entry-title-input-container.drawing input {
+  border-color: rgb(210, 210, 210);
+}
+
+.journal-entry-title-input-container.drawing input:focus {
+  border: 1px solid rgb(213, 175, 235);
+}

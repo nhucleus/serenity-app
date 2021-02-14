@@ -4,3 +4,4 @@ from wtforms.validators import DataRequired
 
 class DrawingForm(FlaskForm):
   title = StringField('Title', validators=[DataRequired()])
+  image = StringField('Image', validators=[DataRequired()])

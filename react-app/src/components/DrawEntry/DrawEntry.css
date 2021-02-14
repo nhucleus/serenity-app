@@ -1,0 +1,31 @@
+.draw-container {
+  width: 652px;
+  padding-top: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 50px;
+  box-shadow: -1px -1px 10px 1px rgb(225, 225, 225);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.draw-title {
+  font-family: "Caveat", cursive;
+  font-size: 42px;
+  text-align: center;
+  padding-top: 33px;
+}
+
+.draw-date {
+  font-family: Helvetica;
+  margin-right: -6px;
+  color: rgb(131, 131, 131);
+  font-weight: 300;
+  font-size: 12px;
+  text-align: right;
+}
+
+.draw-body {
+  margin-top: 30px;
+  border: 1px solid rgb(210, 210, 210);
+}

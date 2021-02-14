@@ -31,6 +31,10 @@
   align-items: center;
 }
 
+.footer-links:hover {
+  color: rgba(117, 58, 153, 0.7);
+}
+
 .footer-links span {
   margin-left: 4px;
 }
