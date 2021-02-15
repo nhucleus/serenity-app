@@ -11,7 +11,7 @@
 <br />
 
 ## MVP
-   * Will be hosted on Heroku
+   * Will be hosted on [Heroku](https://serenity-journal.herokuapp.com/dashboard)
    * Audio will be downloaded from a third party API, playing on a loop
    * User dashboards will be displayed as a calendar with a list of tasks to complete every day
    * Logged in users can write journals, draw images with a virtual canvas, and leave nice comments for other users
