@@ -7,7 +7,7 @@ import JournalModal from "../JournalModal";
 import NewJournalEntry from "../NewJournalEntry";
 import NewDrawEntry from "../NewDrawEntry";
 import JournalEntry from "../JournalEntry";
-import DrawEntry from "../DrawEntry"
+import DrawEntry from "../DrawEntry";
 import { fetchCurrentJournal, fetchMonthJournalEntries, fetchCurrentDrawing, fetchMonthDrawings } from "../../store/entries";
  
 
@@ -55,16 +55,16 @@ function Dashboard() {
 
   useEffect(() => {
 
-      setEvents(events => [...events,
-      ...Object.values(monthJournalEntries).map((entry, idx) => {
-        return {
-          id: entry.id,
-          start: moment(entry.created_at.slice(0, entry.created_at.length - 13)).toDate(),
-          end: moment(entry.created_at.slice(0, entry.created_at.length - 13)).toDate(),
-          title: "Journal",
-        }
-      })
-      ])
+    setEvents(events => [...events,
+    ...Object.values(monthJournalEntries).map((entry, idx) => {
+      return {
+        id: entry.id,
+        start: moment(entry.created_at.slice(0, entry.created_at.length - 13)).toDate(),
+        end: moment(entry.created_at.slice(0, entry.created_at.length - 13)).toDate(),
+        title: "Journal",
+      }
+    })
+    ]);
       
       setEvents(events => [...events,
       ...Object.values(monthDrawings).map((drawing, idx) => {
