@@ -31,6 +31,7 @@ const Drawer = () => {
                     </div>)}
                     <div className="drawer-links">
                         <Link className="drawer-link" onClick={() => setOpen(false)} to="/entries/journal">Your journal entries</Link>
+                        <Link className="drawer-link" onClick={() => setOpen(false)} to="/entries/drawings">Your drawings</Link>
                         <div className="drawer-link" onClick={() => {
                             setOpen(false)
                             logout()

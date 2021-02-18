@@ -21,9 +21,9 @@ function Dashboard() {
   useEffect(async() => {
     await dispatch(fetchCurrentJournal())
     await dispatch(fetchCurrentDrawing())
-    await dispatch(fetchMonthJournalEntries())
+    await dispatch(fetchMonthJournalEntries()) 
     await dispatch(fetchMonthDrawings())
-    setLoaded(true)
+    setLoaded(true) 
   }, []);
 
   const monthJournalEntries = useSelector(state => state.entries.journals.month);
@@ -34,8 +34,9 @@ function Dashboard() {
   const [modalType, setModalType] = useState();
   const [entry, setEntry] = useState();
   const [submitted, setSubmitted] = useState(false);
+  const [newEvent, setNewEvent] = useState(false);
   const [notifText, setNotifText] = useState("");
-  
+
 
   useEffect(() => {
     setTimeout(() => {
@@ -53,8 +54,27 @@ function Dashboard() {
     title: "Draw",
   }]);
 
+    
+// useEffect(() => {
+// console.log(events)
+// }, [events])
+  
   useEffect(() => {
+    if (newEvent) {
+      setEvents(events => [...events, {
+        id: currentJournal.id,
+        start: moment(currentJournal.created_at.slice(0, currentJournal.created_at.length - 13)).toDate(),
+        end: moment(currentJournal.created_at.slice(0, currentJournal.created_at.length - 13)).toDate(),
+        title: "Journal",
+      }]);
+      console.log(events);
+    }
+    setNewEvent(false);
+    
+  }, [currentJournal]);
 
+  useEffect(() => {
+    if (loaded === true) {
     setEvents(events => [...events,
     ...Object.values(monthJournalEntries).map((entry, idx) => {
       return {
@@ -65,6 +85,8 @@ function Dashboard() {
       }
     })
     ]);
+
+    
       
       setEvents(events => [...events,
       ...Object.values(monthDrawings).map((drawing, idx) => {
@@ -74,9 +96,11 @@ function Dashboard() {
           end: moment(drawing.created_at.slice(0, drawing.created_at.length - 13)).toDate(),
           title: "Draw",
         }
-      })
+      }) 
       ])
-      setCalReady(true)
+      setLoaded(false)
+      setCalReady(true) 
+    } 
   }, [loaded]);
 
   useEffect(() => {
@@ -129,13 +153,20 @@ function Dashboard() {
       start: moment(drawing.created_at.slice(0, drawing.created_at.length - 13)).toDate(),
       end: moment(drawing.created_at.slice(0, drawing.created_at.length - 13)).toDate(),
       title: "Draw",
-    }])
-    console.log(drawing)
+    }]);
   }; 
 
-  // useEffect(() => {
-  //   console.log(events)
-  // }, [events])
+  const addEntry = (entry) => {
+    
+    setEvents(events => [...events, {
+      id: entry.id,
+      start: moment(entry.created_at.slice(0, entry.created_at.length - 13)).toDate(),
+      end: moment(entry.created_at.slice(0, entry.created_at.length - 13)).toDate(),
+      title: "Journal",
+    }]);
+    console.log(events)
+
+  }; 
 
   return (
     <>
@@ -151,7 +182,7 @@ function Dashboard() {
         style={{ position: "fixed", top: "0px", bottom: "0", left: "0", right: "0", marginTop: "110px", marginBottom: "80px"  }}
       />}
       <JournalModal open={modalOpen} onClose={() => setModalOpen(false)}>
-        {modalType === 1 && <NewJournalEntry setSubmitted={(text) => {
+        {modalType === 1 && <NewJournalEntry events={events} addEvent={() => setNewEvent(true)} setSubmitted={(text) => {
           setNotifText(text)
           setTimeout(()=> {
             setSubmitted(true)

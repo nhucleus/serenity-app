@@ -25,6 +25,14 @@ def drawings():
 
   return {"drawings": {drawing["id"]: drawing for drawing in drawings_list}}
 
+
+@canvas_routes.route('/drawings/<int:page>')
+@login_required
+def drawings_list(page):
+  drawings = Drawing.query.filter(Drawing.user_id == current_user.id).order_by(Drawing.created_at.desc()).offset(page * 10).limit(10)
+  drawings_list = [drawing.to_dict() for drawing in drawings]
+  return {"drawings_list": {drawing["id"]: drawing for drawing in drawings_list}}
+
 @canvas_routes.route('/<int:id>')
 @login_required
 def drawing():

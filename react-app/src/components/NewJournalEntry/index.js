@@ -1,12 +1,12 @@
 import "./NewJournalEntry.css";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createJournalEntry, editJournalEntry } from "../../store/entries"
-import {RiHeartAddLine} from "react-icons/ri"
-import {FiMinusCircle} from "react-icons/fi"
+import { createJournalEntry, editJournalEntry } from "../../store/entries";
+import { RiHeartAddLine } from "react-icons/ri";
+import { FiMinusCircle } from "react-icons/fi";
 
 
-const NewJournalEntry = ({onClose, setSubmitted}) => {
+const NewJournalEntry = ({onClose, setSubmitted, addEvent}) => {
   const current = useSelector(state => state.entries.journals.current);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -30,14 +30,12 @@ const NewJournalEntry = ({onClose, setSubmitted}) => {
     }
   };
   
-  const submitJournal = () => {
+  const submitJournal = async () => {
     const entry = {
       title,
       body,
     }
     if (current) {
-      console.log("PREVIEW", preview)
-      console.log("CURETTNT", current.photo)
       entry.id = current.id
       if (preview !== current.photo) {
         dispatch(editJournalEntry(entry, photo));
@@ -46,15 +44,17 @@ const NewJournalEntry = ({onClose, setSubmitted}) => {
       }
       setSubmitted("Journal entry successfully updated.");
     } else {
+      addEvent()
+      let newEntry;
       if (photo) {
-        dispatch(createJournalEntry(entry, photo));
+        newEntry = await dispatch(createJournalEntry(entry, photo));
       } else {
-        dispatch(createJournalEntry(entry));
+        newEntry = await dispatch(createJournalEntry(entry));
       }
+      
       setSubmitted("Journal entry successfully submitted.");
     }
-    
-    
+
     onClose();
 
   };

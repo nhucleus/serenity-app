@@ -1,10 +1,11 @@
 const CREATE_NEW_JOURNAL = 'entries/createNewJournal';
-const LOAD_CURRENT_JOURNAL = 'entries/loadCurrentJournal'
-const LOAD_CURRENT_DRAWING = 'entries/loadCurrentDrawing'
-const EDIT_CURRENT_JOURNAL = 'entries/editCurrentJournal'
-const LOAD_MONTH_JOURNAL_ENTRIES = 'entries/loadMonthJournalEntries'
-const LOAD_MONTH_DRAWINGS = 'entries/loadMonthDrawings'
-const LOAD_JOURNAL_ENTRIES_LIST = 'entries/loadJournalEntriesList'
+const LOAD_CURRENT_JOURNAL = 'entries/loadCurrentJournal';
+const LOAD_CURRENT_DRAWING = 'entries/loadCurrentDrawing';
+const EDIT_CURRENT_JOURNAL = 'entries/editCurrentJournal';
+const LOAD_MONTH_JOURNAL_ENTRIES = 'entries/loadMonthJournalEntries';
+const LOAD_MONTH_DRAWINGS = 'entries/loadMonthDrawings';
+const LOAD_JOURNAL_ENTRIES_LIST = 'entries/loadJournalEntriesList';
+const LOAD_DRAWINGS_LIST = 'entries/loadDrawingsList';
 const CREATE_NEW_DRAWING = 'entries/createNewDrawing';
 
 const loadJournalEntry = (entry) => ({
@@ -30,6 +31,11 @@ const loadMonthDrawings = (drawings) => ({
 const loadJournalEntriesList = (entries) => ({
   type: LOAD_JOURNAL_ENTRIES_LIST,
   payload: entries
+});
+
+const loadDrawingsList = (drawings) => ({
+  type: LOAD_DRAWINGS_LIST,
+  payload: drawings
 });
 
 const loadCurrentJournal = (entry) => ({
@@ -62,6 +68,7 @@ export const createJournalEntry = (entry, photo) => async (dispatch) => {
     if (!res.errors) {
       dispatch(loadJournalEntry(data));
     }
+    return data;
   } else {
     const res = await fetch("/api/journal/new", {
       method: 'POST',
@@ -72,7 +79,9 @@ export const createJournalEntry = (entry, photo) => async (dispatch) => {
     if (!res.errors) {
       dispatch(loadJournalEntry(data));
     }
+    return data;
   }
+  
 };
 
 export const createDrawing = (canvas) => async (dispatch) => {
@@ -103,7 +112,6 @@ export const editJournalEntry = (entry, photo, preview) => async (dispatch) => {
       dispatch(loadEditJournal(data));
     }
   } else {
-    console.log(preview)
     if(preview) {
       entry.photoUrl = preview;
     } else {
@@ -163,6 +171,14 @@ export const fetchJournalEntriesLimit = (page) => async (dispatch) => {
   }
 };
 
+export const fetchDrawingsLimit = (page) => async (dispatch) => {
+  const res = await fetch(`/api/canvas/drawings/${page}`);
+  const data = await res.json();
+  if (!data.errors) {
+    dispatch(loadDrawingsList(data["drawings_list"]));
+  }
+};
+
 const initialState = { journals: { month: {}, current: null }, drawings: { month: {}, current: null } };
 
 function reducer(state = initialState, action) {
@@ -197,6 +213,10 @@ function reducer(state = initialState, action) {
     case LOAD_JOURNAL_ENTRIES_LIST:
       newState = Object.assign({}, state);
       newState.journals.list = {...newState.journals.list, ...action.payload};
+      return newState;
+    case LOAD_DRAWINGS_LIST:
+      newState = Object.assign({}, state);
+      newState.drawings.list = {...newState.drawings.list, ...action.payload};
       return newState;
     case EDIT_CURRENT_JOURNAL:
       newState = Object.assign({}, state);

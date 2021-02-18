@@ -1,16 +1,16 @@
-import "./NewDrawEntry.css"
+import "./NewDrawEntry.css";
 import CanvasDraw from "react-canvas-draw";
 import {useState, useRef, useEffect} from "react";
-import {GrBrush} from "react-icons/gr"
+import { GrBrush } from "react-icons/gr";
 import {useDispatch} from "react-redux";
-import {createDrawing } from "../../store/entries"
+import { createDrawing } from "../../store/entries";
 
 const NewDrawEntry = ({addEvent}) => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [color, setColor] = useState("#a68cc6");
   const [image, setImage] = useState();
-  const [brushSize, setBrushSize] = useState(6)
-   const [title, setTitle] = useState("");
+  const [brushSize, setBrushSize] = useState(6);
+  const [title, setTitle] = useState("");
   const drawRef = useRef();
 
   const submitDrawing = async () => {
@@ -19,7 +19,6 @@ const NewDrawEntry = ({addEvent}) => {
       image
     }
     const drawing = await dispatch(createDrawing(canvas))
-    console.log(drawing)
     addEvent(drawing)
   };
 

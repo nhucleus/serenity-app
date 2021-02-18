@@ -1,19 +1,19 @@
-import "./JournalEntryList.css";
+import "./JournalEntriesList.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchJournalEntriesLimit } from "../../store/entries";
 import InfiniteScroll from "react-infinite-scroll-component";
-import JournalEntry from "../JournalEntry"
+import JournalEntry from "../JournalEntry";
 import Loader from "react-loader-spinner";
 
-const JournalEntryList = () => {
+const JournalEntriesList = () => {
   const dispatch = useDispatch();
-  const journalEntries = useSelector(state => state.entries.journals.list)
+  const journalEntries = useSelector(state => state.entries.journals.list);
   const [page, setPage] = useState(0);
 
-  useEffect(() => {
-      dispatch(fetchJournalEntriesLimit(page))
-  }, [dispatch, page])
+    useEffect(() => {
+        dispatch(fetchJournalEntriesLimit(page))
+    }, [dispatch, page]);
 
   return (
       <>
@@ -46,4 +46,4 @@ const JournalEntryList = () => {
   )
 }
 
-export default JournalEntryList;
+export default JournalEntriesList;
