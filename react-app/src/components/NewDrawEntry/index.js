@@ -5,7 +5,8 @@ import { GrBrush } from "react-icons/gr";
 import {useDispatch} from "react-redux";
 import { createDrawing } from "../../store/entries";
 
-const NewDrawEntry = ({addEvent}) => {
+
+const NewDrawEntry = ({addEvent, onClose}) => {
   const dispatch = useDispatch();
   const [color, setColor] = useState("#a68cc6");
   const [image, setImage] = useState();
@@ -19,11 +20,13 @@ const NewDrawEntry = ({addEvent}) => {
       image
     }
     const drawing = await dispatch(createDrawing(canvas))
+    onClose();
     addEvent(drawing)
   };
 
   return (
     <div className="new-draw-container">
+      
       <div className="new-draw-header">DRAW</div>
       <div className="new-draw-subheader">What made you smile today?</div>
       <div className="canvas-and-picker">
@@ -103,7 +106,7 @@ const NewDrawEntry = ({addEvent}) => {
           </button>
       </div>
       <div className="save-draw-button">
-        <button onClick={submitDrawing} className="drawing-submit">SAVE</button>    
+        <button disabled={title ? false : true} onClick={submitDrawing} className="drawing-submit">SAVE</button>    
       </div>
       
     </div>

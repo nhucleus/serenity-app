@@ -21,6 +21,8 @@ const DrawEntry = ({drawing}) => {
                 <CanvasDraw 
                     disabled
                     hideGrid
+                    brushRadius={0}
+                    lazyRadius={0}
                     saveData={drawing.image}
                     canvasWidth={600}
                     canvasHeight={600}

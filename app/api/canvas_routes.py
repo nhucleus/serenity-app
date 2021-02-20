@@ -48,13 +48,14 @@ def current_drawing():
   year = date.year
 
   drawing = Drawing.query.filter(Drawing.user_id == current_user.id).order_by(Drawing.created_at.desc()).first()
-  drawing_date = drawing.created_at
-  drawing_month = drawing_date.month
-  drawing_day = drawing_date.day
-  drawing_year = drawing_date.year
+  if drawing:
+    drawing_date = drawing.created_at
+    drawing_month = drawing_date.month
+    drawing_day = drawing_date.day
+    drawing_year = drawing_date.year
 
-  if month == drawing_month and day == drawing_day and year == drawing_year:
-    return drawing.to_dict()
+    if month == drawing_month and day == drawing_day and year == drawing_year:
+      return drawing.to_dict()
   return {"errors": "No drawing for today"}
 
 @canvas_routes.route('/new', methods=["POST"])

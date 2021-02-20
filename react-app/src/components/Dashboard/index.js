@@ -45,19 +45,22 @@ function Dashboard() {
   }, [submitted]);
 
   const [events, setEvents] = useState([{
-    start: moment().toDate(),
-    end: moment().toDate(),
+    start: moment({hour: 0, minute: 0, seconds: 0}).toDate(),
+    end: moment({hour: 0, minute: 0, seconds: 0}).toDate(),
     title: "Journal",
+    value: 0
   }, {
-    start: moment().toDate(),
-    end: moment().toDate(),
+    start: moment({hour: 0, minute: 0, seconds: 0}).toDate(),
+    end: moment({hour: 0, minute: 0, seconds: 0}).toDate(),
     title: "Draw",
+    value: 1
   }]);
 
     
-// useEffect(() => {
-// console.log(events)
-// }, [events])
+useEffect(() => {
+  setEvents(events => events.sort((a, b) => a.value < b.value ? -1 : 1))
+  console.log(events)
+}, [events])
   
   useEffect(() => {
     if (newEvent) {
@@ -66,8 +69,9 @@ function Dashboard() {
         start: moment(currentJournal.created_at.slice(0, currentJournal.created_at.length - 13)).toDate(),
         end: moment(currentJournal.created_at.slice(0, currentJournal.created_at.length - 13)).toDate(),
         title: "Journal",
+        allDay: true,
+        value: 0
       }]);
-      console.log(events);
     }
     setNewEvent(false);
     
@@ -82,6 +86,7 @@ function Dashboard() {
         start: moment(entry.created_at.slice(0, entry.created_at.length - 13)).toDate(),
         end: moment(entry.created_at.slice(0, entry.created_at.length - 13)).toDate(),
         title: "Journal",
+        value: 0
       }
     })
     ]);
@@ -94,7 +99,8 @@ function Dashboard() {
           id: drawing.id,
           start: moment(drawing.created_at.slice(0, drawing.created_at.length - 13)).toDate(),
           end: moment(drawing.created_at.slice(0, drawing.created_at.length - 13)).toDate(),
-          title: "Draw",
+          title: "Drawing",
+          value: 1
         }
       }) 
       ])
@@ -103,18 +109,24 @@ function Dashboard() {
     } 
   }, [loaded]);
 
+
+
   useEffect(() => {
     if (currentJournal) {
-      setEvents(events.filter(event => {
-        return ((event.title == "Journal" && event.id) || event.title == "Draw")
+      setEvents(events => events.filter(event => {
+        return ((event.title == "Journal" && event.id) || event.title == "Draw" || event.title == "Drawing")
       }))
     }
+
+  }, [currentJournal])
+
+  useEffect(() => { 
     if (currentDrawing) {
       setEvents(events.filter(event => {
-        return ((event.title == "Draw" && event.id) || event.title == "Journal")
+        return ((event.title == "Drawing" && event.id) || event.title == "Journal")
       }))
     }
-  }, [currentDrawing, currentJournal]);
+  }, [currentDrawing]);
 
   const eventClick = (event) => {
     
@@ -132,11 +144,12 @@ function Dashboard() {
       case "Draw":
         setEntry(monthDrawings[event.id])
         setModalOpen(true);
-        if (moment(event.start).date() === moment().date() && !currentDrawing) {
-          setModalType(2);
-        } else {
-          setModalType(5);
-        }
+        setModalType(2);
+        break;
+      case "Drawing":
+        setEntry(monthDrawings[event.id])
+        setModalOpen(true);
+        setModalType(5);
         break;
       case "Comment":
         setModalOpen(true);
@@ -152,7 +165,8 @@ function Dashboard() {
       id: drawing.id,
       start: moment(drawing.created_at.slice(0, drawing.created_at.length - 13)).toDate(),
       end: moment(drawing.created_at.slice(0, drawing.created_at.length - 13)).toDate(),
-      title: "Draw",
+      title: "Drawing",
+      value: 1
     }]);
   }; 
 
@@ -163,9 +177,8 @@ function Dashboard() {
       start: moment(entry.created_at.slice(0, entry.created_at.length - 13)).toDate(),
       end: moment(entry.created_at.slice(0, entry.created_at.length - 13)).toDate(),
       title: "Journal",
+      value: 0
     }]);
-    console.log(events)
-
   }; 
 
   return (
@@ -181,15 +194,17 @@ function Dashboard() {
 
         style={{ position: "fixed", top: "0px", bottom: "0", left: "0", right: "0", marginTop: "110px", marginBottom: "80px"  }}
       />}
-      <JournalModal open={modalOpen} onClose={() => setModalOpen(false)}>
-        {modalType === 1 && <NewJournalEntry events={events} addEvent={() => setNewEvent(true)} setSubmitted={(text) => {
+      <JournalModal draw={modalType === 2 ? true : false} open={modalOpen} onClose={() => setModalOpen(false)}>
+        {modalType === 1 && <NewJournalEntry events={events} addEvent={(entry) => addEntry(entry)} setSubmitted={(text) => {
           setNotifText(text)
           setTimeout(()=> {
             setSubmitted(true)
           }, 250)
-          }} onClose={() => setModalOpen(false)}/>}
+          }} 
+          onClose={() => setModalOpen(false)}
+          />}
           {modalType === 4 && <JournalEntry entry={entry} />}
-        {modalType === 2 && <NewDrawEntry addEvent={(drawing) => addDrawing(drawing)}/>}
+        {modalType === 2 && <NewDrawEntry addEvent={(drawing) => addDrawing(drawing)} onClose={() => setModalOpen(false)}/>}
         {modalType === 5 && <DrawEntry drawing={entry}/>}
       </JournalModal>
     </>

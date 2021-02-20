@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable=False)
-  avatar = db.Column(db.Text)
+  avatar = db.Column(db.Text, default="%PUBLIC_URL%/avatar.png")
   
   # friends = db.Table(
   #   "friends",
@@ -58,6 +58,7 @@ class User(db.Model, UserMixin):
       "last_name": self.last_name,
       "username": self.username,
       "email": self.email,
+      "avatar": self.avatar
       # "journal_entries": journal_entries.to_dict(),
       # "friendships": friendships
       }

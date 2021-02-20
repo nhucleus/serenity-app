@@ -2,10 +2,10 @@ from flask import Blueprint
 import requests
 
 
-bp = Blueprint("quotes", __name__)
+quotes = Blueprint("quotes", __name__)
 
 
-@bp.route("")
+@quotes.route("/")
 def zen_quote():
     res = requests.get("https://zenquotes.io/api/random")
     data = res.json()

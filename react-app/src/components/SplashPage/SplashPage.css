@@ -15,3 +15,45 @@
     1px 1px 0 rgba(0, 0, 0, 0.25), 3px 3px 3px rgba(0, 0, 0, 0.25),
     10px 10px 20px rgba(0, 0, 0, 0.5), 20px 40px 40px rgba(0, 0, 0, 0.5);
 }
+
+.splash-description {
+  width: 100%;
+  position: fixed;
+  top: 15%;
+  transform: translateY(-15%);
+  text-align: center;
+}
+
+.splash-description pre {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-size: 50px;
+  color: rgb(75, 74, 74);
+}
+
+.splash-quote-container {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  bottom: 18%;
+  transform: translateY(18%);
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.splash-quote {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  color: rgb(75, 74, 74);
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.splash-author {
+  font-family: "Lato", sans-serif;
+  font-weight: 200;
+  font-size: 23px;
+  color: rgb(75, 74, 74);
+  text-align: center;
+}

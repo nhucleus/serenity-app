@@ -24,7 +24,14 @@ const NavBar = ({ isLoaded }) => {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <AudioPlayer />
+      <div className="nav-bar-right">
+        <AudioPlayer />
+        <div className="nav-bar-avatar-container">
+          <img draggable="false" className="nav-bar-avatar" src={sessionUser.avatar} />
+          <img draggable="false" className="nav-bar-avatar-border" src="/avatar-border.png"/>
+        </div>
+        
+      </div>
     );
   } else {
     sessionLinks = (
@@ -38,16 +45,16 @@ const NavBar = ({ isLoaded }) => {
 
   return (
     <div className="nav-bar__container">
-      <ul className="nav-bar">
-        <li className="logo-container">
+      <div className="nav-bar">
+        <div className="logo-container">
           <NavLink exact to={sessionUser ? '/dashboard' : '/'} id="title">
             <h1 className="title-text">Serenity</h1>
-            <img className="lavender-img" src={Lavender} />
+            <img draggable="false" className="lavender-img" src={Lavender} />
           </NavLink>
-        </li>
+        </div>
         
-        <li>{isLoaded && sessionLinks}</li>
-      </ul>
+        <div>{isLoaded && sessionLinks}</div>
+      </div>
     </div>
   );
 };

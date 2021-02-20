@@ -51,12 +51,13 @@ def current_journal_entry():
   year = date.year
 
   journal_entry = Journal.query.filter(Journal.user_id == current_user.id).order_by(Journal.created_at.desc()).first()
-  journal_date = journal_entry.created_at
-  journal_month = journal_date.month
-  journal_day = journal_date.day
-  journal_year = journal_date.year
-  if month == journal_month and day == journal_day and year == journal_year:
-    return journal_entry.to_dict()
+  if journal_entry:
+    journal_date = journal_entry.created_at
+    journal_month = journal_date.month
+    journal_day = journal_date.day
+    journal_year = journal_date.year
+    if month == journal_month and day == journal_day and year == journal_year:
+      return journal_entry.to_dict()
   return {"errors": "No journal for today"}
 
 

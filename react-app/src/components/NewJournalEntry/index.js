@@ -42,20 +42,21 @@ const NewJournalEntry = ({onClose, setSubmitted, addEvent}) => {
       } else {
         dispatch(editJournalEntry(entry, null, preview));
       }
+      onClose();
       setSubmitted("Journal entry successfully updated.");
     } else {
-      addEvent()
       let newEntry;
       if (photo) {
         newEntry = await dispatch(createJournalEntry(entry, photo));
       } else {
         newEntry = await dispatch(createJournalEntry(entry));
       }
-      
+      onClose();
+      addEvent(newEntry)
       setSubmitted("Journal entry successfully submitted.");
     }
 
-    onClose();
+    
 
   };
 

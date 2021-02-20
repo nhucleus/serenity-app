@@ -3,7 +3,7 @@ from app.models import db, User
 
 def seed_users():
   demo = User(first_name='Demo', last_name='User',
-              username='Demo', email='demo@aa.io', password='password', avatar='https://cdn3.vectorstock.com/i/thumb-large/68/47/portrait-a-beautiful-asian-businesswoman-in-vector-27976847.jpg')
+              username='Demo', email='demo@aa.io', password='password', avatar='https://techcommunity.microsoft.com/t5/image/serverpage/image-id/217078i525F6A9EF292601F/image-size/large?v=1.0&px=999')
 
   demo1 = User(first_name='Cece', last_name='Love',
               username='cecexlove', email='democece@aa.io', password='password', avatar='https://www.publicdomainpictures.net/pictures/270000/nahled/avatar-people-person-business-u-15354603894rE.jpg')
