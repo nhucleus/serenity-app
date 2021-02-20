@@ -1,10 +1,9 @@
 .splash-container {
   display: flex;
-  background-image: url("./splash.gif");
+  background-image: url("./calm.gif");
   height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
   padding-top: 100px;
 }
 

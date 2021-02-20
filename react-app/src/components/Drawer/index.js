@@ -9,9 +9,10 @@ const Drawer = () => {
     const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     const user = useSelector(state => state.session.user);
+    
     const clickHandler = () => {
         setOpen(!open);
-    }
+    };
 
     const logout = () => {
         dispatch(sessionActions.logout());
