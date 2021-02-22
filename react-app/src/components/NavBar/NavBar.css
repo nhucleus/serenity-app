@@ -77,6 +77,10 @@ body {
   cursor: pointer;
 }
 
+.nav-bar-button:hover:active {
+  background-color: rgba(144, 108, 165, 0.473);
+}
+
 .nav-bar-avatar {
   width: 60px;
   height: 60px;
