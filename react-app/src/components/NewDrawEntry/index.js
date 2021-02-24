@@ -108,9 +108,7 @@ const NewDrawEntry = ({addEvent, onClose}) => {
       <div className="save-draw-button">
         <button disabled={title ? false : true} onClick={submitDrawing} className="drawing-submit">SAVE</button>    
       </div>
-      
     </div>
-   
   )
 };
 

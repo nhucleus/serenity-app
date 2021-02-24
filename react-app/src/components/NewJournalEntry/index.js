@@ -55,9 +55,6 @@ const NewJournalEntry = ({onClose, setSubmitted, addEvent}) => {
       addEvent(newEntry)
       setSubmitted("Journal entry successfully submitted.");
     }
-
-    
-
   };
 
   return (
@@ -87,8 +84,6 @@ const NewJournalEntry = ({onClose, setSubmitted, addEvent}) => {
         {preview && <img className="photo-preview" src={preview} alt="photo"/>}
       </div>
       <button onClick={submitJournal} className="journal-entry-submit">SUBMIT</button>
-      
-
     </div>
   )
 };

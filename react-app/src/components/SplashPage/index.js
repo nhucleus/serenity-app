@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import "./SplashPage.css";
 
 const SplashPage = () => {
-
   const [quote, setQuote] = useState("");
   const [author, setAuthor] = useState("");
   
