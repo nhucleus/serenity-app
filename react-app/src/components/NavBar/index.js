@@ -28,9 +28,8 @@ const NavBar = ({ isLoaded }) => {
         <AudioPlayer />
         <div className="nav-bar-avatar-container">
           <img draggable="false" className="nav-bar-avatar" src={sessionUser.avatar} />
-          <img draggable="false" className="nav-bar-avatar-border" src="/avatar-border.png"/>
+          <img draggable="false" className="nav-bar-avatar-border" src="http://serenityapp.s3.amazonaws.com/avatar-border.png"/>
         </div>
-        
       </div>
     );
   } else {

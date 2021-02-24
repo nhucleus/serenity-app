@@ -1,0 +1,75 @@
+.friends-container {
+  top: 210px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); 
+  width: 80%;
+  bottom: 210px; 
+  border: 1px solid rgb(214,214,214);
+}
+
+.friends-search-container {
+  height: 100px;
+  border-bottom: 1px solid rgb(214,214,214);
+}
+
+.friends-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.friend-card:nth-child(3n+2) {
+  border-left: 1px solid rgb(214,214,214);
+  border-right: 1px solid rgb(214,214,214);
+}
+
+.friend-card {
+  width: calc(100% / 3);
+  height: 140px;
+  display:flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+  background-color: white;
+  border-bottom: 1px solid rgb(214,214,214);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.friend-card:hover {
+  background-color: rgba(191, 138, 223, 0.132);
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+.friend-card:hover:active {
+  background-color: rgba(191, 138, 223, 0.317);
+}
+
+.friend-avatar {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgb(225,225,225);
+  margin-right: 20px
+}
+
+.friend-card-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.friend-name {
+  font-weight: 600;
+  font-size: 22px;
+  color: rgb(40,40,40)
+}
+
+.friend-username {
+  color: rgb(120,120,120);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

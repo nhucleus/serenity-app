@@ -14,20 +14,7 @@ class User(db.Model, UserMixin):
   hashed_password = db.Column(db.String(255), nullable=False)
   avatar = db.Column(db.Text, default="%PUBLIC_URL%/avatar.png")
   
-  # friends = db.Table(
-  #   "friends",
-  #   db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
-  #   db.Column("friend_id", db.Integer, db.ForeignKey("users.id"))
-  # )
-
-  # friendships = db.relationship(
-  #   "User",
-  #   secondary=friends,
-  #   primaryjoin=(friends.c.user_id == id),
-  #   secondaryjoin=(friends.c.friend_id == id),
-  #   backref=db.backref("friends", lazy="dynamic"),
-  #   lazy="dynamic"
-  # )
+  
   journal_entries = db.relationship("Journal", back_populates="user")
   drawings = db.relationship("Drawing", back_populates="user")
   # messages = db.relationship("Message", foreign_keys="messages.user_id")
@@ -46,21 +33,32 @@ class User(db.Model, UserMixin):
   def get_friends(self):
     friendships = Friendship.query.filter(Friendship.user_id == self.id).all()
     self.friends = [friendship.friend for friendship in friendships]
+    self.friends = [friend.to_dict_friend() for friend in self.friends]
+    self.friends = {friend["id"]: friend for friend in self.friends}
   
   def check_password(self, password):
     return check_password_hash(self.password, password)
 
   
   def to_dict(self):
+    self.get_friends()
     return {
       "id": self.id,
       "first_name": self.first_name,
       "last_name": self.last_name,
       "username": self.username,
       "email": self.email,
-      "avatar": self.avatar
-      # "journal_entries": journal_entries.to_dict(),
-      # "friendships": friendships
+      "avatar": self.avatar,
+      "friends": self.friends
+      }
+
+  def to_dict_friend(self):
+    return {
+      "id": self.id,
+      "first_name": self.first_name,
+      "last_name": self.last_name,
+      "username": self.username,
+      "avatar": self.avatar,
       }
 
   def to_dict_full(self):

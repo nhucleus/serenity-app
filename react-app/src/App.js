@@ -8,8 +8,9 @@ import SplashPage from "./components/SplashPage";
 import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
 import Drawer from "./components/Drawer";
-import JournalEntriesList from "./components/JournalEntriesList"
-import DrawingsList from "./components/DrawingsList"
+import JournalEntriesList from "./components/JournalEntriesList";
+import DrawingsList from "./components/DrawingsList";
+import FriendsList from "./components/FriendsList";
 
 
 function App() {
@@ -45,6 +46,10 @@ function App() {
             {sessionUser && <Dashboard />}
             {!sessionUser && <Redirect to="/" />}
             <Footer />
+          </Route>
+          <Route path="/friends">
+            <FriendsList />
+            <Footer /> 
           </Route>
         </Switch>
       )}
