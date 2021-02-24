@@ -1,13 +1,24 @@
 import "./NewMessage.css";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import {RiSendPlaneFill} from "react-icons/ri"
 
 const NewMessage = ({ friend }) => {
     const [subject, setSubject] = useState("");
     const [body, setBody] = useState("");
 
-    
+    const handleSubmit = async () => {
+        const res = await fetch("/api/inbox/new", {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({subject, body, friend_id: friend.id})
+        });
+        const data = await res.json();
+        if (!res.errors) {
+            console.log("SUCCESS");
+        } else {
+            console.log("ERROR");
+        }
+    };
     
     return (
         <div className="new-message-container">
@@ -33,7 +44,7 @@ const NewMessage = ({ friend }) => {
                     </div>
                 </div>
             </div>
-            <button className="new-message-submit">
+            <button onClick={handleSubmit} className="new-message-submit">
                 <RiSendPlaneFill />
             </button>
         </div>

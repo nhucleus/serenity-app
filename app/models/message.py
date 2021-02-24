@@ -14,11 +14,11 @@ class Message(db.Model):
   recipient = db.relationship("User", foreign_keys=friend_id)
   
 
-def to_dict(self):
-  return {
-    "id": self.id,
-    "user_id": self.user_id,
-    "subject": self.subject,
-    "body": self.body,
-    "friend_id": self.friend_id
-  }
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "user_id": self.user_id,
+      "subject": self.subject,
+      "body": self.body,
+      "friend_id": self.friend_id
+    }

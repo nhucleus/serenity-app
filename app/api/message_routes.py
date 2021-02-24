@@ -1,6 +1,6 @@
 from .auth_routes import validation_errors_to_error_messages
-from flask import Blueprint
-from app.models import Message
+from flask import Blueprint, request
+from app.models import Message, db
 from flask_login import login_required, current_user
 from ..forms import MessageForm
 
@@ -13,7 +13,7 @@ def messages():
   return {"messages": [message.to_dict() for message in messages]}
 
 
-@message_routes.route('/new')
+@message_routes.route('/new', methods=["POST"])
 @login_required
 def new_message():
   form = MessageForm()
