@@ -50,11 +50,13 @@ function App() {
           </Route>
           <Route path="/friends">
             <FriendsList />
-            <Footer /> 
+            <Footer />
+            {!sessionUser && <Redirect to="/" />}
           </Route>
           <Route path="/inbox">
             <Inbox />
-            <Footer /> 
+            <Footer />
+            {!sessionUser && <Redirect to="/" />}
           </Route>
         </Switch>
       )}
