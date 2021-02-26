@@ -11,6 +11,7 @@ import Drawer from "./components/Drawer";
 import JournalEntriesList from "./components/JournalEntriesList";
 import DrawingsList from "./components/DrawingsList";
 import FriendsList from "./components/FriendsList";
+import Inbox from "./components/Inbox";
 
 
 function App() {
@@ -51,11 +52,15 @@ function App() {
             <FriendsList />
             <Footer /> 
           </Route>
+          <Route path="/inbox">
+            <Inbox />
+            <Footer /> 
+          </Route>
         </Switch>
       )}
       
     </>
   );
-}
+};
 
 export default App;

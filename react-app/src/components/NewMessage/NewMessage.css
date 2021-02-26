@@ -39,7 +39,7 @@
   font-family: "Caveat", cursive;
 }
 
-input[type="text"]::placeholder {
+input[type="text"].new-message-subject-input::placeholder {
   text-align: center;
 }
 

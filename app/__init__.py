@@ -10,6 +10,7 @@ from .api.auth_routes import auth_routes
 from .api.journal_routes import journal_routes
 from .api.canvas_routes import canvas_routes
 from .api.message_routes import message_routes
+from .api.friends_routes import friends_routes
 from .api.quotes import quotes
 
 from .seeds import seed_commands
@@ -33,6 +34,7 @@ app.config.from_object(Config)
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(journal_routes, url_prefix='/api/journal')
 app.register_blueprint(canvas_routes, url_prefix='/api/canvas')
+app.register_blueprint(friends_routes, url_prefix='/api/friends')
 app.register_blueprint(message_routes, url_prefix='/api/inbox')
 app.register_blueprint(quotes, url_prefix='/api/quotes')
 

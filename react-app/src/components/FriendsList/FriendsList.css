@@ -2,15 +2,50 @@
   top: 210px;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%); 
+  transform: translateX(-50%);
   width: 80%;
-  bottom: 210px; 
-  border: 1px solid rgb(214,214,214);
+  bottom: 210px;
+  border: 1px solid rgb(214, 214, 214);
 }
 
 .friends-search-container {
   height: 100px;
-  border-bottom: 1px solid rgb(214,214,214);
+  border-bottom: 1px solid rgb(214, 214, 214);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.friends-header {
+  font-family: "Amatic SC", cursive;
+  font-size: 56px;
+  color: rgb(144, 108, 165);
+  position: absolute;
+  left: 12%;
+  transform: translateX(-12%);
+  letter-spacing: 2px;
+}
+
+.add-friend-button {
+  position: absolute;
+  right: 30px;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  color: rgb(144, 108, 165);
+  padding: 10px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+}
+
+.add-friend-button:hover {
+  color: rgb(191, 138, 223);
+  background-color: rgba(191, 138, 223, 0.132);
+}
+
+.add-friend-button:hover:active {
+  color: rgb(223, 189, 244);
 }
 
 .friends-list {
@@ -18,21 +53,24 @@
   flex-wrap: wrap;
 }
 
-.friend-card:nth-child(3n+2) {
-  border-left: 1px solid rgb(214,214,214);
-  border-right: 1px solid rgb(214,214,214);
+.friend-card:nth-child(3n + 1) {
+  border-right: 1px solid rgb(214, 214, 214);
+}
+
+.friend-card:nth-child(3n + 2) {
+  border-right: 1px solid rgb(214, 214, 214);
 }
 
 .friend-card {
   width: calc(100% / 3);
   height: 140px;
-  display:flex;
+  display: flex;
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
   cursor: pointer;
   background-color: white;
-  border-bottom: 1px solid rgb(214,214,214);
+  border-bottom: 1px solid rgb(214, 214, 214);
   transition-property: background-color;
   transition-duration: 0.2s;
 }
@@ -52,8 +90,8 @@
   height: 100px;
   object-fit: cover;
   border-radius: 50%;
-  border: 1px solid rgb(225,225,225);
-  margin-right: 20px
+  border: 1px solid rgb(225, 225, 225);
+  margin-right: 20px;
 }
 
 .friend-card-right {
@@ -64,11 +102,11 @@
 .friend-name {
   font-weight: 600;
   font-size: 22px;
-  color: rgb(40,40,40)
+  color: rgb(40, 40, 40);
 }
 
 .friend-username {
-  color: rgb(120,120,120);
+  color: rgb(120, 120, 120);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

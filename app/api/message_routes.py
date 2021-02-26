@@ -9,7 +9,8 @@ message_routes = Blueprint('inbox', __name__)
 @message_routes.route('/')
 @login_required
 def messages():
-  messages = Message.query.filter(Message.user_id == id)
+  messages = Message.query.filter(Message.friend_id == current_user.id).all()
+  print(messages)
   return {"messages": [message.to_dict() for message in messages]}
 
 

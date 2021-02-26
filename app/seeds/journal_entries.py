@@ -235,7 +235,7 @@ def seed_journals():
                 created_at='2021-02-23 13:27:18')
 
   demo40 = Journal(user=users[0],
-                title='Belgium Waffles!',
+                title='Belgian Waffles!',
                 body='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus. Donec scelerisque sollicitudin enim eu venenatis. Duis tincidunt laoreet ex, in pretium orci vestibulum eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis pharetra luctus lacus ut vestibulum. Maecenas ipsum lacus, lacinia quis posuere ut, pulvinar vitae dolor. Integer eu nibh at nisi ullamcorper sagittis id vel leo. Integer feugiat faucibus libero, at maximus nisl suscipit posuere. Morbi nec enim nunc. Phasellus bibendum turpis ut ipsum egestas, sed sollicitudin elit convallis. Cras pharetra mi tristique sapien vestibulum lobortis. Nam eget bibendum metus, non dictum mauris. Nulla at tellus sagittis, viverra est a, bibendum metus.',
                 photo='https://breadboozebacon.com/wp-content/uploads/2020/10/Belgian-Waffles-SQUARE2.jpg',
                 created_at='2021-02-24 10:23:22')

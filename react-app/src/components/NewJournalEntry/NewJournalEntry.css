@@ -39,7 +39,7 @@
   font-family: "Caveat", cursive;
 }
 
-input[type="text"]::placeholder {
+input[type="text"].journal-entry-title-input::placeholder {
   text-align: center;
 }
 

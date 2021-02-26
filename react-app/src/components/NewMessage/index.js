@@ -2,7 +2,7 @@ import "./NewMessage.css";
 import { useState, useEffect } from "react";
 import {RiSendPlaneFill} from "react-icons/ri"
 
-const NewMessage = ({ friend }) => {
+const NewMessage = ({ friend, onClose, setSubmitted }) => {
     const [subject, setSubject] = useState("");
     const [body, setBody] = useState("");
 
@@ -15,6 +15,8 @@ const NewMessage = ({ friend }) => {
         const data = await res.json();
         if (!res.errors) {
             console.log("SUCCESS");
+            onClose();
+            setSubmitted("Message sent.");
         } else {
             console.log("ERROR");
         }

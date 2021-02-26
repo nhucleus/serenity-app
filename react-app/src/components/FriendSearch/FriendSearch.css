@@ -1,0 +1,127 @@
+.friend-search-container {
+  width: 500px;
+  min-height: 650px;
+  box-shadow: -1px -1px 10px 1px rgb(225, 225, 225);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.friend-search-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(214, 214, 214);
+  height: 90px;
+  width: 100%;
+}
+
+.friend-search-wrapper {
+  background-color: rgb(240, 240, 240);
+  height: 60px;
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  width: 75%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.friend-search-wrapper.focused {
+  border: 1px solid rgb(213, 175, 235);
+  background-color: white;
+}
+
+.search-icon {
+  font-size: 28px;
+  color: rgb(161, 161, 161);
+}
+
+.search-icon.focused {
+  color: rgb(213, 175, 235);
+}
+
+.friend-search-input {
+  border: none;
+  outline: none;
+  padding-left: 12px;
+  padding-top: 3px;
+  height: 50px;
+  width: 100%;
+  background-color: rgb(240, 240, 240);
+  font-size: 18px;
+}
+
+.friend-search-input:focus {
+  background-color: white;
+}
+.friend-search-input:focus::placeholder {
+  color: rgb(213, 175, 235);
+}
+
+.search-card {
+  display: flex;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgb(214, 214, 214);
+  width: 100%;
+  position: relative;
+}
+
+.search-card-left {
+}
+
+.search-avatar {
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid rgb(225, 225, 225);
+}
+
+.search-card-middle {
+  padding-top: 6px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-name {
+  font-weight: 600;
+  font-size: 18px;
+  color: rgb(40, 40, 40);
+  margin-bottom: 3px;
+}
+
+.search-username {
+  color: rgb(120, 120, 120);
+}
+
+.search-card-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 45px;
+  display: flex;
+  justify-content: center;
+  width: 40px;
+}
+
+.search-friend-button {
+  background-color: rgb(155, 111, 180);
+  color: white;
+  font-weight: 600;
+  outline: none;
+  border-style: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+.search-friend-button:hover {
+  background-color: rgb(191, 138, 223);
+}
+
+.search-friend-button:hover:active {
+  background-color: rgb(223, 189, 244);
+}

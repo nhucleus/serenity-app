@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable=False)
-  avatar = db.Column(db.Text, default="%PUBLIC_URL%/avatar.png")
+  avatar = db.Column(db.Text, default="http://serenityapp.s3.amazonaws.com/avatar.png")
   
   
   journal_entries = db.relationship("Journal", back_populates="user")

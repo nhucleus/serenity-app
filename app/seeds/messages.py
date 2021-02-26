@@ -19,7 +19,7 @@ def seed_messages():
                 friend_id=users[0].id)
 
   demo3 = Message(user_id=users[4].id,
-                subject="You're the best!",
+                subject="My Sunshine",
                 body="You have the best smile.",
                 friend_id=users[0].id)
 

@@ -1,24 +1,25 @@
-// const LOAD_FRIENDS = 'user/loadFriends';
+const LOAD_INBOX = 'user/loadInbox';
 
-// const loadFriends = (friends) => ({
-//     type: LOAD_FRIENDS,
-//     payload: friends
-// });
+const loadInbox = (messages) => ({
+    type: LOAD_INBOX,
+    payload: messages
+});
 
-// export const fetchFriends = () => dispatch => {
-//   const res = await fetch("/api/friends");
-//   const data = await res.json();
-//   dispatch(loadFriends(data["friends"]));
-// };
+export const fetchInbox = () => async (dispatch) => {
+  const res = await fetch("/api/inbox/");
+  const data = await res.json();
+  dispatch(loadInbox(data["messages"]));
+};
 
-const initialState = { messages: {}};
+const initialState = { messages: []};
 
 function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
-    // case LOAD_FRIENDS:
-    //   newState = Object.assign({}, state, { friends: action.payload });
-    //   return newState;
+    case LOAD_INBOX:
+      newState = Object.assign({}, state);
+      newState.messages = action.payload;
+      return newState;
     default:
       return state;
   }

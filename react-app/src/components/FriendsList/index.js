@@ -3,6 +3,9 @@ import {useSelector, useDispatch} from "react-redux";
 import {useEffect, useState} from "react";
 import JournalModal from "../JournalModal";
 import NewMessage from "../NewMessage";
+import FriendSearch from "../FriendSearch"
+import {AiOutlineUserAdd} from "react-icons/ai"
+import { clearSearchResults } from "../../store/friends";
 
 const FriendsList = () => {
     const dispatch = useDispatch();
@@ -11,6 +14,15 @@ const FriendsList = () => {
     const [friend, setFriend] = useState();
 
     const [modalOpen, setModalOpen] = useState(false);
+    const [addModalOpen, setAddModalOpen] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [notifText, setNotifText] = useState("");
+
+    useEffect(() => {
+        setTimeout(() => {
+        setSubmitted(false)
+        }, 5000)
+    }, [submitted]);
 
     const friendClick = (friend) => {
         setFriend(friend);
@@ -18,9 +30,14 @@ const FriendsList = () => {
     };
 
     return (
+        <>
+        <div className={submitted ? "notification" : "notification hidden"}>{notifText}</div>
         <div className="friends-container">
             <div className="friends-search-container">
-                Search Placeholder
+                <div className="friends-header">Friends</div>
+                <div onClick={() => setAddModalOpen(true)} className="add-friend-button">
+                    <AiOutlineUserAdd />
+                </div>
             </div>
             <div className="friends-list">
                 {friends &&
@@ -46,9 +63,23 @@ const FriendsList = () => {
                 }
             </div>
             <JournalModal open={modalOpen} onClose={() => setModalOpen(false)}>
-                <NewMessage friend={friend} />
+                <NewMessage friend={friend} onClose={() => setModalOpen(false)} setSubmitted={(text) => {
+                    setNotifText(text)
+                    setTimeout(()=> {
+                        setSubmitted(true)
+                    }, 250)
+                    }} 
+                    />
+            </JournalModal>
+            <JournalModal open={addModalOpen} onClose={() => {
+                setAddModalOpen(false)
+                dispatch(clearSearchResults())
+                }
+                }>
+                <FriendSearch setFriend={(friend) => setFriend(friend)} open={() => setModalOpen(true)}/>
             </JournalModal>
         </div>
+        </>
     )
 };
 

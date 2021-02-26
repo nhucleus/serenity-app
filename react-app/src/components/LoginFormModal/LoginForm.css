@@ -31,6 +31,10 @@
   outline: none;
 }
 
+input[type="text"].login-form-input::placeholder {
+  text-align: center;
+}
+
 .login-form-input:focus {
   border: 1px solid rgb(155, 111, 180);
 }

@@ -1,0 +1,69 @@
+.inbox-container {
+  top: 210px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  bottom: 210px;
+  border: 1px solid rgb(214, 214, 214);
+}
+
+.inbox-header-container {
+  height: 100px;
+  border-bottom: 1px solid rgb(214, 214, 214);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.inbox-header {
+  font-family: "Amatic SC", cursive;
+  font-size: 56px;
+  color: rgb(144, 108, 165);
+  position: absolute;
+  left: 12%;
+  transform: translateX(-12%);
+  letter-spacing: 2px;
+}
+
+.inbox-content {
+}
+
+.message-card {
+  display: flex;
+  padding: 15px 25px;
+  border-bottom: 1px solid rgb(214, 214, 214);
+}
+
+.message-card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 25px;
+}
+
+.message-sender-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid rgb(225, 225, 225);
+  margin-bottom: 8px;
+}
+
+.message-sender-username {
+  font-size: 15px;
+  color: rgb(90, 90, 90);
+}
+
+.message-card-right {
+  padding-top: 12px;
+}
+
+.message-card-subject {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.message-card-body {
+}

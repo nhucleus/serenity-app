@@ -20,5 +20,6 @@ class Message(db.Model):
       "user_id": self.user_id,
       "subject": self.subject,
       "body": self.body,
-      "friend_id": self.friend_id
+      "friend_id": self.friend_id,
+      "sender": self.sender.to_dict_friend()
     }

@@ -39,6 +39,10 @@ input[type="password"]::placeholder {
   text-align: center; 
 }
 
+input[type="text"].signup-form-input::placeholder {
+  text-align: center;
+}
+
 .signup-form-submit {
   background-color: rgb(155, 111, 180);
   height: 40px;

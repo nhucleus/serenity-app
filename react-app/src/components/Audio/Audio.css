@@ -12,3 +12,8 @@
 .play-button:hover:active {
   color: rgba(219, 214, 214, 0.884);
 }
+
+.audio-container {
+  position: absolute;
+  left: 170px;
+}
