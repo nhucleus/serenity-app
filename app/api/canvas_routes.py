@@ -19,7 +19,7 @@ def drawings():
   month = date.month
   year = date.year
 
-  drawings = Drawing.query.filter(Drawing.user_id == current_user.id).limit(31)
+  drawings = Drawing.query.filter(Drawing.user_id == current_user.id).order_by(Drawing.created_at.desc()).limit(31)
   filtered_drawings = filter(month_filter, drawings)
   drawings_list = [drawing.to_dict() for drawing in drawings]
 

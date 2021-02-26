@@ -23,7 +23,7 @@ def journal_entries():
   date = datetime.datetime.now()
   month = date.month
   year = date.year
-  journal_entries = Journal.query.filter(Journal.user_id == current_user.id).limit(31)
+  journal_entries = Journal.query.filter(Journal.user_id == current_user.id).order_by(Journal.created_at.desc()).limit(31)
   filtered_entries = filter(month_filter, journal_entries)
   journal_entries_list = [journal.to_dict() for journal in filtered_entries]
   
