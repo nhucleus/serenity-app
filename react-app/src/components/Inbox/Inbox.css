@@ -26,8 +26,8 @@
   letter-spacing: 2px;
 }
 
-.inbox-content {
-}
+/* .inbox-content {
+} */
 
 .message-card {
   display: flex;
@@ -65,5 +65,5 @@
   margin-bottom: 6px;
 }
 
-.message-card-body {
-}
+/* .message-card-body {
+} */

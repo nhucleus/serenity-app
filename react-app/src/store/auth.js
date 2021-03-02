@@ -10,7 +10,7 @@ const setUser = (user) => ({
 const loadFriend = (friend) => ({
   type: ADD_FRIEND,
   payload: friend
-})
+});
 
 const removeUser = () => ({
   type: REMOVE_USER
