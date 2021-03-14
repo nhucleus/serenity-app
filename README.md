@@ -6,13 +6,13 @@
 
 ## Project Description
 
-   * Serenity will be an app for users looking for some positivity in their lives! When a user accesses the home page, there’ll be tranquil music playing (ocean waves, LoFi music, classical music, etc.). When a user successfully signs up and logs in, they’ll be able to complete a list of tasks every day (journal, draw, and leave nice comments for other users). Nice comments will be displayed at the top of the page, where it'll be randomized in an array and a new one will appear for every render.
+   * Serenity will be an app for users looking for some positivity in their lives! The positive quotes rendered on the Splash page are from [zenquotes.io](https://zenquotes.io/). When a user logs in, there’ll be tranquil music playing to set the mood. When a user successfully signs up and logs in, they’ll be able to journal, draw, and leave nice comments for other users to increase positivity within their lives.
 <br />
 <br />
 
 ## MVP
-   * Will be hosted on [Heroku](https://serenity-journal.herokuapp.com/dashboard)
-   * Audio will be downloaded from a third party API, playing on a loop
+   * Will be hosted on [Heroku](https://serenity-journal.herokuapp.com)
+   * Audio will be playing on a loop once the user is logged in
    * User dashboards will be displayed as a calendar with a list of tasks to complete every day
    * Logged in users can write journals, draw images with a virtual canvas, and leave nice comments for other users
 <br />
@@ -196,7 +196,7 @@
 
 ## Technologies
    * React
+   * Redux
    * Flask
-   * React-calendar npm
-   * React-canvas-draw npm
-   * Component library TBD
+   * react-calendar npm
+   * react-canvas-draw npm
