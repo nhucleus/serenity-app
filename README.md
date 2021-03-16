@@ -1,6 +1,6 @@
 # Serenity App
 
-   This app utilizes Flask SQLAlchemy for its backend and React.js/Redux.js for its frontend.
+   This app utilizes Flask SQLAlchemy for its backend and React.js / Redux.js for its frontend.
 <br />
 <br />
 
@@ -11,7 +11,7 @@
 <br />
 
 ## MVP
-   * Will be hosted on [Heroku](https://serenity-journal.herokuapp.com)
+   * Hosted on Heroku, found [here](https://serenity-journal.herokuapp.com).
    * Audio will be playing on a loop once the user is logged in
    * User dashboards will be displayed as a calendar with a list of tasks to complete every day
    * Logged in users can write journals, draw images with a virtual canvas, and leave nice comments for other users
