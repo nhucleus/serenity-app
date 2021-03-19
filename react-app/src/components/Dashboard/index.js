@@ -57,10 +57,10 @@ function Dashboard() {
   }]);
 
     
-useEffect(() => {
-  setEvents(events => events.sort((a, b) => a.value < b.value ? -1 : 1))
-  console.log(events)
-}, [events])
+  useEffect(() => {
+    setEvents(events => events.sort((a, b) => a.value < b.value ? -1 : 1))
+    console.log(events)
+  }, [events]);
   
   useEffect(() => {
     if (newEvent) {
@@ -79,21 +79,21 @@ useEffect(() => {
 
   useEffect(() => {
     if (loaded === true) {
-    setEvents(events => [...events,
-    ...Object.values(monthJournalEntries).map((entry, idx) => {
-      return {
-        id: entry.id,
-        start: moment(entry.created_at.slice(0, entry.created_at.length - 13)).toDate(),
-        end: moment(entry.created_at.slice(0, entry.created_at.length - 13)).toDate(),
-        title: "Journal",
-        value: 0
-      }
-    })
-    ]);
+      setEvents(events => [...events,
+      ...Object.values(monthJournalEntries).map((entry, idx) => {
+        return {
+          id: entry.id,
+          start: moment(entry.created_at.slice(0, entry.created_at.length - 13)).toDate(),
+          end: moment(entry.created_at.slice(0, entry.created_at.length - 13)).toDate(),
+          title: "Journal",
+          value: 0
+        }
+      })
+      ]);
 
     
       
-      setEvents(events => [...events,
+    setEvents(events => [...events,
       ...Object.values(monthDrawings).map((drawing, idx) => {
         return {
           id: drawing.id,
@@ -102,11 +102,11 @@ useEffect(() => {
           title: "Drawing",
           value: 1
         }
-      }) 
+      })
       ])
       setLoaded(false)
-      setCalReady(true) 
-    } 
+      setCalReady(true)
+    }
   }, [loaded]);
 
 
@@ -116,9 +116,9 @@ useEffect(() => {
       setEvents(events => events.filter(event => {
         return ((event.title == "Journal" && event.id) || event.title == "Draw" || event.title == "Drawing")
       }))
-    }
+    };
 
-  }, [currentJournal])
+  }, [currentJournal]);
 
   useEffect(() => { 
     if (currentDrawing) {

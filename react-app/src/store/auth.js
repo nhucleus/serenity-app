@@ -30,7 +30,7 @@ export const login = ({ email, password }) => async (dispatch) => {
 };
 
 export const addFriend = (friend) => async (dispatch) => {
-  const res = await fetch(`api/friends/${friend.id}/add`);
+  const res = await fetch(`/api/friends/${friend.id}/add`);
   const data = await res.json();
   if (!data.errors) {
     dispatch(loadFriend(friend))

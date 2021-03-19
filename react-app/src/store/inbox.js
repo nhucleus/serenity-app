@@ -6,7 +6,7 @@ const loadInbox = (messages) => ({
 });
 
 export const fetchInbox = () => async (dispatch) => {
-  const res = await fetch("/api/inbox/");
+  const res = await fetch("/api/inbox");
   const data = await res.json();
   dispatch(loadInbox(data["messages"]));
 };
