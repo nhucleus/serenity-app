@@ -1,29 +1,35 @@
-const SET_USER = 'session/setUser';
-const REMOVE_USER = 'session/removeUser';
-const ADD_FRIEND = 'session/addFriend';
+const SET_USER = "session/setUser";
+const REMOVE_USER = "session/removeUser";
+const ADD_FRIEND = "session/addFriend";
+const LOAD_AVATAR = "session/addAvatar";
 
 const setUser = (user) => ({
   type: SET_USER,
-  payload: user
+  payload: user,
 });
 
 const loadFriend = (friend) => ({
   type: ADD_FRIEND,
-  payload: friend
+  payload: friend,
+});
+
+const loadAvatar = (avatar) => ({
+  type: LOAD_AVATAR,
+  payload: avatar,
 });
 
 const removeUser = () => ({
-  type: REMOVE_USER
+  type: REMOVE_USER,
 });
 
 export const login = ({ email, password }) => async (dispatch) => {
-  const res = await fetch('/api/auth/login', {
-    method: 'POST',
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ email, password })
+  const res = await fetch("/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
   });
   if (res.ok) {
-    const data = await res.json()
+    const data = await res.json();
     dispatch(setUser(data));
   }
   return res;
@@ -33,18 +39,31 @@ export const addFriend = (friend) => async (dispatch) => {
   const res = await fetch(`/api/friends/${friend.id}/add`);
   const data = await res.json();
   if (!data.errors) {
-    dispatch(loadFriend(friend))
+    dispatch(loadFriend(friend));
   }
-}
+};
+
+export const editAvatar = (photo) => async (dispatch) => {
+  const form = new FormData();
+  form.append("image", photo);
+  const res = await fetch("/api/auth/avatar", {
+    method: "POST",
+    body: form,
+  });
+  const data = await res.json();
+  if (!res.errors) {
+    dispatch(loadAvatar(data["avatar"]));
+  }
+};
 
 export const restoreUser = () => async (dispatch) => {
-  const res = await fetch('/api/auth', {
+  const res = await fetch("/api/auth", {
     headers: {
       "Content-Type": "application/json",
     },
   });
-  const data = await res.json()
-  if (!data.errors){
+  const data = await res.json();
+  if (!data.errors) {
     dispatch(setUser(data));
   }
   return res;
@@ -52,29 +71,29 @@ export const restoreUser = () => async (dispatch) => {
 
 export const signup = (user) => async (dispatch) => {
   const { firstName, lastName, username, email, password } = user;
-  const res = await fetch('/api/auth/signup', {
-    method: 'POST',
-    headers: {"Content-Type": "application/json"},
+  const res = await fetch("/api/auth/signup", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       first_name: firstName,
       last_name: lastName,
       username,
       email,
-      password
-    })
+      password,
+    }),
   });
-  if (res.ok){
-    const data = await res.json()
+  if (res.ok) {
+    const data = await res.json();
     dispatch(setUser(data));
   }
   return res;
 };
 
 export const logout = () => async (dispatch) => {
-  const res = await fetch('/api/auth/logout', {
-    method: 'GET',
+  const res = await fetch("/api/auth/logout", {
+    method: "GET",
   });
-  if (res.ok){
+  if (res.ok) {
     dispatch(removeUser());
   }
   return res;
@@ -93,11 +112,18 @@ function reducer(state = initialState, action) {
       return newState;
     case ADD_FRIEND:
       newState = Object.assign({}, state);
-      newState.user.friends = {...newState.user.friends, [action.payload.id]: action.payload}
+      newState.user.friends = {
+        ...newState.user.friends,
+        [action.payload.id]: action.payload,
+      };
+      return newState;
+    case LOAD_AVATAR:
+      newState = Object.assign({}, state);
+      newState.user = { ...newState.user, avatar: action.payload };
       return newState;
     default:
       return state;
   }
-};
+}
 
 export default reducer;

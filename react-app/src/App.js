@@ -49,14 +49,14 @@ function App() {
             <Footer />
           </Route>
           <Route path="/friends">
-            <FriendsList />
-            <Footer />
             {!sessionUser && <Redirect to="/" />}
+            {sessionUser && <FriendsList />}
+            <Footer />
           </Route>
           <Route path="/inbox">
+            {!sessionUser && <Redirect to="/" />}
             <Inbox />
             <Footer />
-            {!sessionUser && <Redirect to="/" />}
           </Route>
         </Switch>
       )}

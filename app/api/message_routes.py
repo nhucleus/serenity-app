@@ -6,7 +6,7 @@ from ..forms import MessageForm
 
 message_routes = Blueprint('inbox', __name__)
 
-@message_routes.route('/')
+@message_routes.route('')
 @login_required
 def messages():
   messages = Message.query.filter(Message.friend_id == current_user.id).all()

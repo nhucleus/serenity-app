@@ -3,6 +3,9 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+from werkzeug.utils import secure_filename
+from ..config import Config
+from ..helpers import *
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -76,6 +79,17 @@ def sign_up():
     login_user(user)
     return user.to_dict()
   return {'errors': validation_errors_to_error_messages(form.errors)}
+
+
+@auth_routes.route('/avatar', methods=['POST'])
+def edit_avatar():
+  image = request.files["image"]
+  image.filename = secure_filename(image.filename)
+  imgUrl = upload_file_to_s3(image, Config.S3_BUCKET)
+  user = User.query.get(current_user.id)
+  user.avatar = imgUrl
+  db.session.commit()
+  return {'avatar': imgUrl}
 
 
 @auth_routes.route('/unauthorized')

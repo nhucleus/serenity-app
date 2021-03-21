@@ -90,6 +90,7 @@ body {
   user-select: none;
   transform: translateY(-50%);
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .nav-bar-avatar-container {
@@ -115,4 +116,142 @@ body {
   transform: translateY(-50%);
   width: 80px;
   height: 80px;
+  cursor: pointer;
+}
+
+.profile-container {
+  box-shadow: -1px -1px 10px 1px rgb(225, 225, 225);
+  width: 500px;
+  height: 300px;
+}
+
+.profile-header {
+  font-family: "Caveat", cursive;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  color: rgb(144, 108, 165);
+  padding-top: 10px;
+}
+
+.edit-avatar-container {
+  position: relative;
+  height: 160px;
+}
+
+.edit-avatar-border {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  right: 20px;
+}
+
+.edit-avatar {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  right: 38px;
+  top: 22px;
+  filter: brightness(75%);
+  user-select: none;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.edit-avatar-button {
+  position: absolute;
+  font-size: 40px;
+  color: rgb(225, 225, 225);
+  right: 78px;
+  top: 67px;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#edit-avatar-input {
+  display: none;
+}
+
+.edit-avatar-button:hover {
+  background-color: rgba(255, 255, 255, 0.221);
+}
+
+.profile-body {
+  display: flex;
+  height: auto;
+}
+
+.profile-body-left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.profile-logout {
+  color: rgb(155, 111, 180);
+  cursor: pointer;
+  font-weight: 600;
+  background-color: white;
+  border: 2px solid rgb(155, 111, 180);
+  border-radius: 6px;
+  height: 35px;
+  width: 80px;
+  margin-top: 71px;
+  outline: none;
+}
+
+.profile-logout:hover {
+  background-color: rgba(211, 167, 237, 0.208);
+}
+
+.profile-logout:hover:active {
+  background-color: rgba(223, 189, 244, 0.322);
+}
+
+.profile-name {
+  font-weight: 600;
+  font-size: 22px;
+  color: rgb(40, 40, 40);
+  margin-bottom: 10px;
+}
+
+.profile-username {
+  color: rgb(120, 120, 120);
+  margin-bottom: 3px;
+}
+
+.profile-email {
+  font-style: italic;
+  color: rgb(83, 83, 83);
+}
+
+.profile-body-right {
+  width: 50%;
+  height: 100%;
+}
+
+.submit-avatar {
+  background-color: rgb(155, 111, 180);
+  height: 35px;
+  width: 80px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+  position: absolute;
+  margin-top: 15px;
+  right: 60px;
+}
+
+.submit-avatar:hover {
+  background-color: rgb(191, 138, 223);
+}
+
+.submit-avatar:hover:active {
+  background-color: rgb(223, 189, 244);
 }

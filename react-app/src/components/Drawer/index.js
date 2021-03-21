@@ -14,10 +14,6 @@ const Drawer = () => {
         setOpen(!open);
     };
 
-    const logout = () => {
-        dispatch(sessionActions.logout());
-    };
-
     return (
         <>
             <div onClick={() => setOpen(false)} className={open ? "drawer-overlay" : "drawer-overlay closed"}></div>
@@ -35,11 +31,6 @@ const Drawer = () => {
                         <Link className="drawer-link" onClick={() => setOpen(false)} to="/entries/journal">Your journal entries</Link>
                         <Link className="drawer-link" onClick={() => setOpen(false)} to="/entries/drawings">Your drawings</Link>
                         <Link className="drawer-link" onClick={() => setOpen(false)} to="/friends">Friends</Link>
-                        <div className="drawer-link" onClick={() => {
-                            setOpen(false)
-                            logout()
-                        }
-                        }>Log Out</div>
                     </div>
                 </div>
             </div>
