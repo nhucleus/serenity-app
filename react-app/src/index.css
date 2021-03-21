@@ -1,4 +1,6 @@
 /* TODO Add site wide styles */
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Lato:ital,wght@1,300&family=Amatic+SC:wght@700&family=Sacramento&display=swap');
+
 body {
   font-family: Arial, Helvetica, sans-serif !important;
 }

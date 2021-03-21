@@ -26,6 +26,7 @@
 
 .splash-description pre {
   font-family: "Lato", sans-serif;
+  font-style: italic;
   font-weight: 300;
   font-size: 50px;
   color: rgb(75, 74, 74);
@@ -39,6 +40,7 @@
   transform: translateY(18%);
   padding-left: 100px;
   padding-right: 100px;
+  font-style: italic;
 }
 
 .splash-quote {
