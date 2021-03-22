@@ -6,14 +6,14 @@
 
 ## Project Description
 
-   * Serenity will be an app for users looking for some positivity in their lives! The positive quotes rendered on the Splash page are from [zenquotes.io](https://zenquotes.io/). When a user logs in, there’ll be tranquil music playing to set the mood. When a user successfully signs up and logs in, they’ll be able to journal, draw, and leave nice comments for other users to increase positivity within their lives.
+   * Serenity is an app for users looking for some positivity in their lives! The positive quotes rendered on the Splash page are from [zenquotes.io](https://zenquotes.io/). When a user logs in, there’ll be tranquil music playing to set the mood. When a user successfully signs up and logs in, they’ll be able to journal, draw, and leave nice comments for other users to increase positivity within their lives.
 <br />
 <br />
 
 ## MVP
    * Hosted on Heroku, found [here](https://serenity-journal.herokuapp.com).
-   * Audio will be playing on a loop once the user is logged in
-   * User dashboards will be displayed as a calendar with a list of tasks to complete every day
+   * Audio begins on a loop once the user is logged in
+   * User dashboards are displayed as a calendar with a list of tasks to complete every day
    * Logged in users can write journals, draw images with a virtual canvas, and leave nice comments for other users
 <br />
 <br />
@@ -190,7 +190,8 @@
   * Canvas Modal
   * Comment Modal
   * Drawer Component
-  * Inbox component
+  * Inbox Component
+  * Footer Component
 <br />
 <br />
 
