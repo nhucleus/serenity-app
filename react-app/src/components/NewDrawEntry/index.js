@@ -24,8 +24,6 @@ const NewDrawEntry = ({addEvent, onClose}) => {
     addEvent(drawing)
   };
 
-  console.log(image);
-
   return (
     <div className="new-draw-container">
       

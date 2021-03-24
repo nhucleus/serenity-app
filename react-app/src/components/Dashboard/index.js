@@ -59,7 +59,6 @@ function Dashboard() {
     
   useEffect(() => {
     setEvents(events => events.sort((a, b) => a.value < b.value ? -1 : 1))
-    console.log(events)
   }, [events]);
   
   useEffect(() => {
