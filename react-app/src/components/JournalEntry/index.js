@@ -27,13 +27,13 @@ const JournalEntry = ({ entry }) => {
         <JournalModal open={modalOpen} onClose={() => setModalOpen(false)}>
           <div className="full-photo-container">
             <img className="full-photo" src={entry.photo} />
-            <RiCloseCircleLine className="photo-modal-close" onClick={() => setModalOpen(false)}/>
+            <RiCloseCircleLine className="photo-modal-close" onClick={() => setModalOpen(false)} />
           </div>
           
         </JournalModal>
       </div>
     </div>
-  )
+  );
 };
 
 export default JournalEntry;
