@@ -1,7 +1,7 @@
 import {useState} from "react";
 import "./JournalEntry.css";
-import JournalModal from "../JournalModal"
-import {RiCloseCircleLine} from "react-icons/ri"
+import JournalModal from "../JournalModal";
+import { RiCloseCircleLine } from "react-icons/ri";
 const months = ["January","February","March","April","May","June","July",
             "August","September","October","November","December"];
 
