@@ -1,5 +1,5 @@
 import Relaxing from "./relaxing.mp3"
-import {useRef, useState, useEffect} from "react";
+import { useRef, useState, useEffect } from "react";
 import { RiPlayCircleLine, RiPauseCircleLine } from "react-icons/ri";
 import "./Audio.css";
 
@@ -27,7 +27,7 @@ const AudioPlayer = () => {
     <div className="audio-container">
       <div className="audio-player">
         <audio ref={audioRef} src={Relaxing} autoPlay={true} loop />
-        {playing ? <RiPauseCircleLine onClick={playHandler} className="play-button"/> : <RiPlayCircleLine onClick={playHandler} className="play-button"/>}
+        {playing ? <RiPauseCircleLine onClick={playHandler} className="play-button" /> : <RiPlayCircleLine onClick={playHandler} className="play-button" />}
         
       </div>
     </div>
