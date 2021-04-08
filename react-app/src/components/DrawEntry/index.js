@@ -5,7 +5,7 @@ const months = ["January","February","March","April","May","June","July",
 
 
 
-const DrawEntry = ({drawing}) => {
+const DrawEntry = ({ drawing }) => {
 
     const date = new Date(drawing.created_at)
     
@@ -18,7 +18,7 @@ const DrawEntry = ({drawing}) => {
                 {drawing.title}
             </div>
             <div className="draw-body">
-                <CanvasDraw 
+                <CanvasDraw
                     disabled
                     hideGrid
                     brushRadius={0}
@@ -31,6 +31,6 @@ const DrawEntry = ({drawing}) => {
         </div>
         
     )
-}
+};
 
 export default DrawEntry;
