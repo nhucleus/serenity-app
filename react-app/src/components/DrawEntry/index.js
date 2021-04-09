@@ -7,7 +7,7 @@ const months = ["January","February","March","April","May","June","July",
 
 const DrawEntry = ({ drawing }) => {
 
-    const date = new Date(drawing.created_at)
+    const date = new Date(drawing.created_at);
     
     return (
         <div className="draw-container">
