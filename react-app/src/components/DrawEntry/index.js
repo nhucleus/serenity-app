@@ -30,7 +30,7 @@ const DrawEntry = ({ drawing }) => {
             </div>
         </div>
         
-    )
+    );
 };
 
 export default DrawEntry;
