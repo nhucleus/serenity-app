@@ -1,12 +1,11 @@
 import "./Drawer.css";
 import {useState} from "react";
 import { BiLeftArrow } from "react-icons/bi";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as sessionActions from '../../store/auth';
 
 const Drawer = () => {
-    const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     const user = useSelector(state => state.session.user);
     
