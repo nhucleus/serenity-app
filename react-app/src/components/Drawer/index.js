@@ -3,7 +3,6 @@ import {useState} from "react";
 import { BiLeftArrow } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import * as sessionActions from '../../store/auth';
 
 const Drawer = () => {
     const [open, setOpen] = useState(false);
