@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { RiSearchLine } from "react-icons/ri";
 import {useDispatch, useSelector} from "react-redux";
 import { searchForFriends, clearSearchResults } from "../../store/friends";
-import {addFriend} from "../../store/auth"
+import { addFriend } from "../../store/auth";
 
 const FriendSearch = ({setFriend, open}) => {
     const [focused, setFocused] = useState(false);
