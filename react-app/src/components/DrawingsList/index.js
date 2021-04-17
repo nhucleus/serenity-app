@@ -46,4 +46,4 @@ const DrawingsList = () => {
   )
 };
 
-export default DrawingsList
+export default DrawingsList;
