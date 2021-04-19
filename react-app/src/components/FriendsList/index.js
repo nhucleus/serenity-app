@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import JournalModal from "../JournalModal";
 import NewMessage from "../NewMessage";
 import FriendSearch from "../FriendSearch"
-import {AiOutlineUserAdd} from "react-icons/ai"
+import { AiOutlineUserAdd } from "react-icons/ai";
 import { clearSearchResults } from "../../store/friends";
 
 const FriendsList = () => {
