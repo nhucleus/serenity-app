@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {useEffect, useState} from "react";
 import JournalModal from "../JournalModal";
 import NewMessage from "../NewMessage";
-import FriendSearch from "../FriendSearch"
+import FriendSearch from "../FriendSearch";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { clearSearchResults } from "../../store/friends";
 
