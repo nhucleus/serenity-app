@@ -1,5 +1,5 @@
 import "./Inbox.css";
-import {useEffect} from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchInbox } from "../../store/inbox";
 
