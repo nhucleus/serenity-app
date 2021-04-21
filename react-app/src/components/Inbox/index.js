@@ -9,7 +9,7 @@ const Inbox = () => {
 
     useEffect(() => {
         dispatch(fetchInbox());
-    }, [])
+    }, []);
 
     const inbox = useSelector(state => state.inbox.messages)
 
