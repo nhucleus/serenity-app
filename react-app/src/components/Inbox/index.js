@@ -11,7 +11,7 @@ const Inbox = () => {
         dispatch(fetchInbox());
     }, []);
 
-    const inbox = useSelector(state => state.inbox.messages)
+    const inbox = useSelector(state => state.inbox.messages);
 
     return (
         <div className="inbox-container">
