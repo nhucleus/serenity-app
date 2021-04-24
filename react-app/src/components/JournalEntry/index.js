@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import "./JournalEntry.css";
 import JournalModal from "../JournalModal";
 import { RiCloseCircleLine } from "react-icons/ri";
