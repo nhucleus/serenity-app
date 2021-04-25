@@ -1,4 +1,4 @@
-import Relaxing from "./relaxing.mp3"
+import Relaxing from "./relaxing.mp3";
 import { useRef, useState, useEffect } from "react";
 import { RiPlayCircleLine, RiPauseCircleLine } from "react-icons/ri";
 import "./Audio.css";
