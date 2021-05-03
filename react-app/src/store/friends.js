@@ -16,7 +16,7 @@ export const searchForFriends = (query) => async (dispatch) => {
   dispatch(loadSearchResults(data["results"]));
 };
 
-const initialState = {search: []}
+const initialState = { search: [] };
 
 function reducer(state = initialState, action) {
   let newState;
