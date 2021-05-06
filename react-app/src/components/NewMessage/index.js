@@ -1,6 +1,6 @@
 import "./NewMessage.css";
 import { useState } from "react";
-import {RiSendPlaneFill} from "react-icons/ri"
+import { RiSendPlaneFill } from "react-icons/ri";
 
 const NewMessage = ({ friend, onClose, setSubmitted }) => {
     const [subject, setSubject] = useState("");
