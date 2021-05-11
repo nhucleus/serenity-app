@@ -182,7 +182,7 @@ function Dashboard() {
 
   return (
     <>
-    <div className={submitted ? "notification" : "notification hidden"}>{notifText}</div>
+      <div className={submitted ? "notification" : "notification hidden"}>{notifText}</div>
       {calReady && <Calendar
         localizer={localizer}
         events={events}
@@ -191,23 +191,23 @@ function Dashboard() {
         views={['month']}
         onSelectEvent={(event) => eventClick(event)}
 
-        style={{ position: "fixed", top: "0px", bottom: "0", left: "0", right: "0", marginTop: "110px", marginBottom: "80px"  }}
+        style={{ position: "fixed", top: "0px", bottom: "0", left: "0", right: "0", marginTop: "110px", marginBottom: "80px" }}
       />}
       <JournalModal draw={modalType === 2 ? true : false} open={modalOpen} onClose={() => setModalOpen(false)}>
         {modalType === 1 && <NewJournalEntry events={events} addEvent={(entry) => addEntry(entry)} setSubmitted={(text) => {
           setNotifText(text)
-          setTimeout(()=> {
+          setTimeout(() => {
             setSubmitted(true)
           }, 250)
-          }} 
+        }}
           onClose={() => setModalOpen(false)}
-          />}
-          {modalType === 4 && <JournalEntry entry={entry} />}
-        {modalType === 2 && <NewDrawEntry addEvent={(drawing) => addDrawing(drawing)} onClose={() => setModalOpen(false)}/>}
-        {modalType === 5 && <DrawEntry drawing={entry}/>}
+        />}
+        {modalType === 4 && <JournalEntry entry={entry} />}
+        {modalType === 2 && <NewDrawEntry addEvent={(drawing) => addDrawing(drawing)} onClose={() => setModalOpen(false)} />}
+        {modalType === 5 && <DrawEntry drawing={entry} />}
       </JournalModal>
     </>
-  )
+  );
 };
 
 export default Dashboard;
