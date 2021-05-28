@@ -199,5 +199,6 @@
    * React
    * Redux
    * Flask
+   * SQLAlchemy
    * react-calendar npm
    * react-canvas-draw npm
