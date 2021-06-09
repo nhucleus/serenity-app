@@ -7,7 +7,7 @@ const loadSearchResults = (friends) => ({
 });
 
 export const clearSearchResults = () => ({
-    type: CLEAR_SEARCH_RESULTS,
+  type: CLEAR_SEARCH_RESULTS,
 });
 
 export const searchForFriends = (query) => async (dispatch) => {
