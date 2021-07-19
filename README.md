@@ -64,7 +64,7 @@
 | image       |   string  | not null                        |
 
 * Unique index on `userId`
-* `photo` will be URL to picture using [AWS](https://aws.amazon.com/s3/)
+* `image` will be an object containing gridpoints from `react-canvas-draw npm` component library
 * A `drawing` belongs to a `user`
 <br />
 <br />
