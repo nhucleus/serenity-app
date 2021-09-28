@@ -1,8 +1,6 @@
 import "./DrawEntry.css";
 import CanvasDraw from "react-canvas-draw";
-const months = ["January","February","March","April","May","June","July",
-            "August","September","October","November","December"];
-
+import { months } from "../../utils";
 
 
 const DrawEntry = ({ drawing }) => {
